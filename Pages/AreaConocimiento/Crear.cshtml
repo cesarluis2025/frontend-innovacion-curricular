@@ -1,0 +1,31 @@
+@page
+@model FrontendInnovacionCurricular.Pages.AreaConocimiento.CrearModel
+@{ ViewData["Title"] = "Nueva área de conocimiento"; }
+
+<h1>Nueva área de conocimiento</h1>
+
+@if (!string.IsNullOrEmpty(Model.MensajeError))
+{
+    <div class="error">@Model.MensajeError</div>
+}
+
+<form method="post">
+    <div>
+        <label asp-for="Registro.Id">ID</label>
+        <input asp-for="Registro.Id" type="number" />
+    </div>
+    <div>
+        <label asp-for="Registro.GranArea">Gran área</label>
+        <input asp-for="Registro.GranArea" type="text" maxlength="60" />
+    </div>
+    <div>
+        <label asp-for="Registro.Area">Área</label>
+        <input asp-for="Registro.Area" type="text" maxlength="60" />
+    </div>
+    <div>
+        <label asp-for="Registro.Disciplina">Disciplina</label>
+        <input asp-for="Registro.Disciplina" type="text" maxlength="60" />
+    </div>
+    <button type="submit">Guardar</button>
+    <a class="boton" href="/AreaConocimiento">Cancelar</a>
+</form>

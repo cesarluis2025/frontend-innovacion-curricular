@@ -1,0 +1,15 @@
+@page "{nit:int}"
+@model FrontendInnovacionCurricular.Pages.Aliado.EditarModel
+@{ ViewData["Title"] = "Editar aliado"; }
+<h1>Editar aliado NIT @Model.Registro.Nit</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+<form method="post">
+    <div><label>NIT</label><input value="@Model.Registro.Nit" type="number" disabled /></div>
+    <div><label asp-for="Registro.RazonSocial">Razón social</label><input asp-for="Registro.RazonSocial" type="text" maxlength="60" /></div>
+    <div><label asp-for="Registro.NombreContacto">Nombre de contacto</label><input asp-for="Registro.NombreContacto" type="text" maxlength="60" /></div>
+    <div><label asp-for="Registro.Correo">Correo</label><input asp-for="Registro.Correo" type="text" maxlength="70" /></div>
+    <div><label asp-for="Registro.Telefono">Teléfono</label><input asp-for="Registro.Telefono" type="text" maxlength="45" /></div>
+    <div><label asp-for="Registro.Ciudad">Ciudad</label><input asp-for="Registro.Ciudad" type="text" maxlength="45" /></div>
+    <button type="submit">Actualizar</button>
+    <a class="boton" href="/Aliado">Cancelar</a>
+</form>

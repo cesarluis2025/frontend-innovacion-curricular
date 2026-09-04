@@ -1,0 +1,13 @@
+@page "{id:int}"
+@model FrontendInnovacionCurricular.Pages.PracticaEstrategia.EditarModel
+@{ ViewData["Title"] = "Editar práctica/estrategia"; }
+<h1>Editar práctica / estrategia #@Model.Registro.Id</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+<form method="post">
+    <div><label>ID</label><input value="@Model.Registro.Id" type="number" disabled /></div>
+    <div><label asp-for="Registro.Tipo">Tipo</label><input asp-for="Registro.Tipo" type="text" maxlength="45" /></div>
+    <div><label asp-for="Registro.Nombre">Nombre</label><input asp-for="Registro.Nombre" type="text" maxlength="45" /></div>
+    <div><label asp-for="Registro.Descripcion">Descripción</label><input asp-for="Registro.Descripcion" type="text" maxlength="45" /></div>
+    <button type="submit">Actualizar</button>
+    <a class="boton" href="/PracticaEstrategia">Cancelar</a>
+</form>
