@@ -2,24 +2,43 @@
 <html lang="es">
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewData["Title"] - Innovación Curricular</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
-        <nav>
-            <strong>Innovación Curricular</strong>
-            <a href="/AreaConocimiento">Área de conocimiento</a>
-            <a href="/Universidad">Universidad</a>
-            <a href="/AspectoNormativo">Aspecto normativo</a>
-            <a href="/PracticaEstrategia">Práctica/estrategia</a>
-            <a href="/Enfoque">Enfoque</a>
-            <a href="/CarInnovacion">Car. innovación</a>
-            <a href="/Aliado">Aliado</a>
-        </nav>
-    </header>
-    <main>
-        @RenderBody()
-    </main>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="marca">
+                <span class="marca-linea"></span>
+                <h1>Innovación<br />Curricular</h1>
+                <p>Panel de catálogos</p>
+            </div>
+            <nav>
+                <a href="/AreaConocimiento">Área de conocimiento</a>
+                <a href="/Universidad">Universidad</a>
+                <a href="/AspectoNormativo">Aspecto normativo</a>
+                <a href="/PracticaEstrategia">Práctica / estrategia</a>
+                <a href="/Enfoque">Enfoque</a>
+                <a href="/CarInnovacion">Característica de innovación</a>
+                <a href="/Aliado">Aliado</a>
+            </nav>
+        </aside>
+        <div class="contenido">
+            <main>
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll(".sidebar nav a").forEach(function (enlace) {
+            if (location.pathname.toLowerCase().startsWith(enlace.getAttribute("href").toLowerCase())) {
+                enlace.classList.add("activo");
+            }
+        });
+    </script>
 </body>
 </html>
