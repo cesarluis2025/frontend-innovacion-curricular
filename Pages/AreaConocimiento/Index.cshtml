@@ -3,17 +3,11 @@
 @{ ViewData["Title"] = "Área de conocimiento"; }
 
 <h1>Área de conocimiento</h1>
-<a class="boton" href="/AreaConocimiento/Crear">+ Nuevo registro</a>
+<a class="boton boton-primario" href="/AreaConocimiento/Crear">+ Nuevo registro</a>
 
 <table>
     <thead>
-        <tr>
-            <th>ID</th>
-            <th>Gran área</th>
-            <th>Área</th>
-            <th>Disciplina</th>
-            <th></th>
-        </tr>
+        <tr><th>ID</th><th>Gran área</th><th>Área</th><th>Disciplina</th><th></th></tr>
     </thead>
     <tbody>
         @foreach (var item in Model.Registros)
@@ -26,8 +20,7 @@
                 <td class="acciones">
                     <a href="/AreaConocimiento/Editar/@item.Id">Editar</a>
                     <form method="post" asp-page-handler="Eliminar" asp-route-id="@item.Id"
-                          style="display:inline"
-                          onsubmit="return confirm('¿Eliminar este registro?');">
+                          style="display:inline" onsubmit="return confirm('¿Eliminar este registro?');">
                         <button type="submit">Eliminar</button>
                     </form>
                 </td>

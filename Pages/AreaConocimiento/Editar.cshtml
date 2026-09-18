@@ -3,30 +3,12 @@
 @{ ViewData["Title"] = "Editar área de conocimiento"; }
 
 <h1>Editar área de conocimiento #@Model.Registro.Id</h1>
-
-@if (!string.IsNullOrEmpty(Model.MensajeError))
-{
-    <div class="error">@Model.MensajeError</div>
-}
-
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
 <form method="post">
-    <div>
-        <label>ID</label>
-        <input value="@Model.Registro.Id" type="number" disabled />
-        <!-- el id no se edita: es la llave primaria -->
-    </div>
-    <div>
-        <label asp-for="Registro.GranArea">Gran área</label>
-        <input asp-for="Registro.GranArea" type="text" maxlength="60" />
-    </div>
-    <div>
-        <label asp-for="Registro.Area">Área</label>
-        <input asp-for="Registro.Area" type="text" maxlength="60" />
-    </div>
-    <div>
-        <label asp-for="Registro.Disciplina">Disciplina</label>
-        <input asp-for="Registro.Disciplina" type="text" maxlength="60" />
-    </div>
+    <div><label>ID</label><input value="@Model.Registro.Id" type="number" disabled /></div>
+    <div><label asp-for="Registro.GranArea">Gran área</label><input asp-for="Registro.GranArea" type="text" maxlength="60" /></div>
+    <div><label asp-for="Registro.Area">Área</label><input asp-for="Registro.Area" type="text" maxlength="60" /></div>
+    <div><label asp-for="Registro.Disciplina">Disciplina</label><input asp-for="Registro.Disciplina" type="text" maxlength="60" /></div>
     <button type="submit">Actualizar</button>
     <a class="boton" href="/AreaConocimiento">Cancelar</a>
 </form>
