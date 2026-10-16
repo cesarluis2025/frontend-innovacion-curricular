@@ -1,9 +1,8 @@
 @page "{id:int}"
 @model FrontendInnovacionCurricular.Pages.Facultad.DetalleModel
 @{ ViewData["Title"] = "Detalle"; }
-<h1>@Model.Maestro.Nombre</h1>
-<p><a href="/Facultad">← Volver a la lista</a></p>
-@if (TempData["Ok"] is string ok) { <div class="ok">@ok</div> }
+<p><a class="volver" href="/Facultad"><svg class="ico" aria-hidden="true"><use href="#i-atras"/></svg> Volver a la lista</a></p>
+<div class="titulo-txt" style="margin-bottom:1rem"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-facultad"/></svg></span><h1>@Model.Maestro.Nombre</h1></div>
 
 <section>
     <h2>Programas de esta facultad</h2>
@@ -23,7 +22,7 @@
 </div>
     }
     <h3>Agregar varias filas</h3>
-    @if (Model.SeccionConError == "Programas" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+    @if (Model.SeccionConError == "Programas" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
     <form method="post" asp-page-handler="Programas" asp-route-id="@Model.Maestro.Id">
         <div class="tabla">
 <table id="tablaProgramas" class="filas">
@@ -36,8 +35,8 @@
             </tbody>
         </table>
 </div>
-        <button type="button" class="agregar-fila" data-tabla="tablaProgramas">+ Agregar fila</button>
-        <button type="submit">Guardar todas las filas</button>
+        <button type="button" class="agregar-fila" data-tabla="tablaProgramas"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Agregar fila</button>
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar todas las filas</button>
     </form>
 </section>
 <script src="~/js/detalle.js"></script>

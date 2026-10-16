@@ -33,6 +33,7 @@ public class EditarModel : PageModel
             Registro.Id = id;
             return Page();
         }
+        TempData["Ok"] = "Cambios guardados.";
         return RedirectToPage("Index");
     }
 }

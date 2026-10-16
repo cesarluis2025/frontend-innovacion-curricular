@@ -22,7 +22,7 @@ public class IndexModel : PageModel
     public async Task<IActionResult> OnPostRetirarAsync(int a, int b)
     {
         MensajeError = await _cliente.RetirarAsync(a, b);
-        if (MensajeError is null) return RedirectToPage();
+        if (MensajeError is null) { TempData["Ok"] = "Registro retirado."; return RedirectToPage(); }
         Registros = await _cliente.ListarAsync();
         return Page();
     }

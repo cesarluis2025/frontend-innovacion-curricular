@@ -2,10 +2,10 @@
 @model FrontendInnovacionCurricular.Pages.ActivAcademica.IndexModel
 @{ ViewData["Title"] = "Actividades académicas"; }
 <header class="titulo">
-    <h1>Actividades académicas</h1>
-    <a class="boton principal" href="/ActivAcademica/Crear">+ Nueva actividad académica</a>
+    <div class="titulo-txt"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-actividad"/></svg></span><h1>Actividades académicas</h1></div>
+    <a class="boton principal" href="/ActivAcademica/Crear"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Nueva actividad académica</a>
 </header>
-@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
 
 <div class="tabla">
 <table>
@@ -16,9 +16,9 @@
             <tr>
                 <td>@item.Id</td><td>@item.Nombre</td><td>@item.Tipo</td><td>@item.NumCreditos</td><td>@item.Idioma</td><td>@item.DisenioNombre</td>
                 <td class="acciones">
-                    <a href="/ActivAcademica/Editar/@item.Id">Editar</a>
-                    <form method="post" asp-page-handler="Eliminar" asp-route-id="@item.Id" style="display:inline" onsubmit="return confirm('¿Retirar este registro?');">
-                        <button type="submit">Retirar</button>
+                    <a class="btn-icono" href="/ActivAcademica/Editar/@item.Id"><svg class="ico" aria-hidden="true"><use href="#i-lapiz"/></svg> Editar</a>
+                    <form method="post" asp-page-handler="Eliminar" asp-route-id="@item.Id" style="display:inline" data-confirmar="¿Retirar este registro?">
+                        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-basura"/></svg> Retirar</button>
                     </form>
                 </td>
             </tr>

@@ -27,6 +27,7 @@ public class EditarModel : PageModel
     {
         var error = await _cliente.ActualizarAsync(nit, Registro);
         if (error != null) { MensajeError = error; Registro.Nit = nit; return Page(); }
+        TempData["Ok"] = "Cambios guardados.";
         return RedirectToPage("Index");
     }
 }

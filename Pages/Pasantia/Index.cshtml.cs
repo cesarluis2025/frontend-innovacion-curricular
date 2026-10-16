@@ -24,7 +24,7 @@ public class IndexModel : PageModel
     public async Task<IActionResult> OnPostEliminarAsync(int id)
     {
         MensajeError = await _cliente.EliminarAsync(id);
-        if (MensajeError is null) return RedirectToPage();
+        if (MensajeError is null) { TempData["Ok"] = "Registro retirado."; return RedirectToPage(); }
         Registros = await _cliente.ListarAsync();
         return Page();
     }

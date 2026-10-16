@@ -2,14 +2,14 @@
 @model FrontendInnovacionCurricular.Pages.CarInnovacion.CrearModel
 @{ ViewData["Title"] = "Nueva característica de innovación"; }
 <h1>Nueva característica de innovación</h1>
-@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
 <form method="post">
     <div><label asp-for="Registro.Id">ID</label><input asp-for="Registro.Id" type="number" /></div>
     <div><label asp-for="Registro.Nombre">Nombre</label><input asp-for="Registro.Nombre" type="text" maxlength="45" /></div>
     <div><label asp-for="Registro.Descripcion">Descripción</label><input asp-for="Registro.Descripcion" type="text" /></div>
     <div><label asp-for="Registro.Tipo">Tipo</label><input asp-for="Registro.Tipo" type="text" maxlength="45" /></div>
     <div class="barra">
-        <button type="submit">Guardar</button>
-        <a class="boton" href="/CarInnovacion">Cancelar</a>
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar</button>
+        <a class="boton" href="/CarInnovacion"><svg class="ico" aria-hidden="true"><use href="#i-atras"/></svg> Cancelar</a>
     </div>
 </form>

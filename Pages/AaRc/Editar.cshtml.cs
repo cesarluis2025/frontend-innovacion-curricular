@@ -33,6 +33,7 @@ public class EditarModel : PageModel
             if (actual != null) { Registro.ActivAcademicasIdcurso = a; Registro.RegistroCalificadoCodigo = b; Registro.ActivAcademicaNombre = actual.ActivAcademicaNombre; Registro.RegistroCalificadoNombre = actual.RegistroCalificadoNombre; }
             return Page();
         }
+        TempData["Ok"] = "Cambios guardados.";
         return RedirectToPage("Index");
     }
 }

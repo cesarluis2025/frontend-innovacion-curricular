@@ -47,6 +47,7 @@ public class EditarModel : PageModel
             await CargarListasAsync();
             return Page();
         }
+        TempData["Ok"] = "Cambios guardados.";
         return RedirectToPage("Index");
     }
 }

@@ -2,12 +2,12 @@
 @model FrontendInnovacionCurricular.Pages.ProgramaPe.CrearModel
 @{ ViewData["Title"] = "Nueva asignación de práctica"; }
 <h1>Nueva asignación de práctica</h1>
-@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
 <form method="post">
     <div><label asp-for="Registro.Programa">Programa</label><select asp-for="Registro.Programa" asp-items="Model.ListaPrograma" required><option value="">Seleccione…</option></select></div>
     <div><label asp-for="Registro.PracticaEstrategia">Práctica o estrategia</label><select asp-for="Registro.PracticaEstrategia" asp-items="Model.ListaPracticaEstrategia" required><option value="">Seleccione…</option></select></div>
     <div class="barra">
-        <button type="submit">Guardar</button>
-        <a class="boton" href="/ProgramaPe">Cancelar</a>
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar</button>
+        <a class="boton" href="/ProgramaPe"><svg class="ico" aria-hidden="true"><use href="#i-atras"/></svg> Cancelar</a>
     </div>
 </form>

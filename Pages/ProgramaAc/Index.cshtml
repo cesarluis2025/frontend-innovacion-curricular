@@ -2,10 +2,10 @@
 @model FrontendInnovacionCurricular.Pages.ProgramaAc.IndexModel
 @{ ViewData["Title"] = "Programas y áreas de conocimiento"; }
 <header class="titulo">
-    <h1>Programas y áreas de conocimiento</h1>
-    <a class="boton principal" href="/ProgramaAc/Crear">+ Nueva asignación de área</a>
+    <div class="titulo-txt"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-globo"/></svg></span><h1>Programas y áreas de conocimiento</h1></div>
+    <a class="boton principal" href="/ProgramaAc/Crear"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Nueva asignación de área</a>
 </header>
-@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
 
 <div class="tabla">
 <table>
@@ -17,8 +17,8 @@
                 <td>@item.ProgramaNombre</td><td>@item.AreaConocimientoNombre</td>
                 <td class="acciones">
                     
-                    <form method="post" asp-page-handler="Retirar" asp-route-a="@item.Programa" asp-route-b="@item.AreaConocimiento" style="display:inline" onsubmit="return confirm('¿Retirar esta asignación?');">
-                        <button type="submit">Retirar</button>
+                    <form method="post" asp-page-handler="Retirar" asp-route-a="@item.Programa" asp-route-b="@item.AreaConocimiento" style="display:inline" data-confirmar="¿Retirar esta asignación?">
+                        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-basura"/></svg> Retirar</button>
                     </form>
                 </td>
             </tr>

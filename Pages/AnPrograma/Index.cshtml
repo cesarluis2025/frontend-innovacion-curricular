@@ -2,10 +2,10 @@
 @model FrontendInnovacionCurricular.Pages.AnPrograma.IndexModel
 @{ ViewData["Title"] = "Aspectos normativos de los programas"; }
 <header class="titulo">
-    <h1>Aspectos normativos de los programas</h1>
-    <a class="boton principal" href="/AnPrograma/Crear">+ Nueva asignación de aspecto normativo</a>
+    <div class="titulo-txt"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-norma"/></svg></span><h1>Aspectos normativos de los programas</h1></div>
+    <a class="boton principal" href="/AnPrograma/Crear"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Nueva asignación de aspecto normativo</a>
 </header>
-@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
 
 <div class="tabla">
 <table>
@@ -17,8 +17,8 @@
                 <td>@item.AspectoNormativoNombre</td><td>@item.ProgramaNombre</td>
                 <td class="acciones">
                     
-                    <form method="post" asp-page-handler="Retirar" asp-route-a="@item.AspectoNormativo" asp-route-b="@item.Programa" style="display:inline" onsubmit="return confirm('¿Retirar esta asignación?');">
-                        <button type="submit">Retirar</button>
+                    <form method="post" asp-page-handler="Retirar" asp-route-a="@item.AspectoNormativo" asp-route-b="@item.Programa" style="display:inline" data-confirmar="¿Retirar esta asignación?">
+                        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-basura"/></svg> Retirar</button>
                     </form>
                 </td>
             </tr>

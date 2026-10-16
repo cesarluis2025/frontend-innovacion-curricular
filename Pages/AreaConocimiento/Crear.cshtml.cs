@@ -27,6 +27,7 @@ public class CrearModel : PageModel
             MensajeError = error;
             return Page();
         }
+        TempData["Ok"] = "Registro guardado.";
         return RedirectToPage("Index");
     }
 }

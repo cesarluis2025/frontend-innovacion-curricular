@@ -4,27 +4,25 @@
     ViewData["Title"] = "Inicio";
     string N(int n) => n < 0 ? "—" : n.ToString();
 }
-<h1 class="portada">Módulo de innovación curricular</h1>
-<p class="intro">Cada programa académico cuelga de una facultad y cada facultad de una universidad. Entre por donde quiera registrar o consultar.</p>
-
-<ol class="cadena" aria-label="Estructura académica">
-    <li><a href="/Universidad"><span class="cifra">@N(Model.Universidades)</span><span class="nombre">Universidades</span></a></li>
-    <li><a href="/Facultad"><span class="cifra">@N(Model.Facultades)</span><span class="nombre">Facultades</span></a></li>
-    <li><a href="/Programa"><span class="cifra">@N(Model.Programas)</span><span class="nombre">Programas</span></a></li>
-</ol>
-<p class="nota">Dentro de cada universidad, facultad o programa, el botón «Detalle» deja ver y agregar lo que depende de él, varias filas a la vez.</p>
-
-<div class="bloques">
+<section class="hero">
+    <h1>Módulo de innovación curricular</h1>
+    <p>Cada programa académico cuelga de una facultad y cada facultad de una universidad. Entre por donde quiera registrar o consultar.</p>
+    <ol class="cadena" aria-label="Estructura académica">
+        <li><a href="/Universidad"><svg class="ico" aria-hidden="true"><use href="#i-universidad"/></svg><span class="cifra">@N(Model.Universidades)</span><span class="nombre">Universidades</span></a></li>
+        <li><a href="/Facultad"><svg class="ico" aria-hidden="true"><use href="#i-facultad"/></svg><span class="cifra">@N(Model.Facultades)</span><span class="nombre">Facultades</span></a></li>
+        <li><a href="/Programa"><svg class="ico" aria-hidden="true"><use href="#i-programa"/></svg><span class="cifra">@N(Model.Programas)</span><span class="nombre">Programas</span></a></li>
+    </ol>
+    <p class="hero-nota"><svg class="ico" aria-hidden="true"><use href="#i-ojo"/></svg> El botón «Detalle» de cada universidad, facultad o programa deja ver y agregar lo que depende de él, varias filas a la vez.</p>
+</section>
 <section class="bloque">
     <h2>Catálogos</h2>
-    <ul><li><a href="/AreaConocimiento">Área de conocimiento</a></li><li><a href="/AspectoNormativo">Aspecto normativo</a></li><li><a href="/PracticaEstrategia">Práctica o estrategia</a></li><li><a href="/Enfoque">Enfoque</a></li><li><a href="/CarInnovacion">Característica de innovación</a></li><li><a href="/Aliado">Aliado</a></li></ul>
+    <div class="rejilla"><a class="tarjeta" href="/AreaConocimiento"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-globo"/></svg></span><span class="tarjeta-txt"><strong>Área de conocimiento</strong><span>Áreas y disciplinas del saber</span></span></a><a class="tarjeta" href="/AspectoNormativo"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-norma"/></svg></span><span class="tarjeta-txt"><strong>Aspecto normativo</strong><span>Leyes y normas que rigen los programas</span></span></a><a class="tarjeta" href="/PracticaEstrategia"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-blanco"/></svg></span><span class="tarjeta-txt"><strong>Práctica o estrategia</strong><span>Prácticas y estrategias pedagógicas</span></span></a><a class="tarjeta" href="/Enfoque"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-enfoque"/></svg></span><span class="tarjeta-txt"><strong>Enfoque</strong><span>Enfoques de formación</span></span></a><a class="tarjeta" href="/CarInnovacion"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-bombillo"/></svg></span><span class="tarjeta-txt"><strong>Característica de innovación</strong><span>Qué hace innovador a un programa</span></span></a><a class="tarjeta" href="/Aliado"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-aliado"/></svg></span><span class="tarjeta-txt"><strong>Aliado</strong><span>Empresas e instituciones aliadas</span></span></a></div>
 </section>
 <section class="bloque">
     <h2>Detalle del programa</h2>
-    <ul><li><a href="/Acreditacion">Acreditaciones</a></li><li><a href="/RegistroCalificado">Registros calificados</a></li><li><a href="/ActivAcademica">Actividades académicas</a></li><li><a href="/Pasantia">Pasantías</a></li><li><a href="/Premio">Premios</a></li></ul>
+    <div class="rejilla"><a class="tarjeta" href="/Acreditacion"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-acreditacion"/></svg></span><span class="tarjeta-txt"><strong>Acreditaciones</strong><span>Acreditaciones de alta calidad</span></span></a><a class="tarjeta" href="/RegistroCalificado"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-registro"/></svg></span><span class="tarjeta-txt"><strong>Registros calificados</strong><span>Registros que autorizan el programa</span></span></a><a class="tarjeta" href="/ActivAcademica"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-actividad"/></svg></span><span class="tarjeta-txt"><strong>Actividades académicas</strong><span>Cursos y actividades de formación</span></span></a><a class="tarjeta" href="/Pasantia"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-pasantia"/></svg></span><span class="tarjeta-txt"><strong>Pasantías</strong><span>Pasantías y prácticas</span></span></a><a class="tarjeta" href="/Premio"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-premio"/></svg></span><span class="tarjeta-txt"><strong>Premios</strong><span>Reconocimientos recibidos</span></span></a></div>
 </section>
 <section class="bloque">
     <h2>Asignaciones</h2>
-    <ul><li><a href="/ProgramaAc">Áreas de cada programa</a></li><li><a href="/ProgramaPe">Prácticas de cada programa</a></li><li><a href="/ProgramaCi">Características de cada programa</a></li><li><a href="/AnPrograma">Normas de cada programa</a></li><li><a href="/EnfoqueRc">Enfoques de cada registro</a></li><li><a href="/AaRc">Actividades de cada registro</a></li><li><a href="/DocenteDepartamento">Docentes por programa</a></li><li><a href="/Alianza">Alianzas</a></li></ul>
+    <div class="rejilla"><a class="tarjeta" href="/ProgramaAc"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-globo"/></svg></span><span class="tarjeta-txt"><strong>Áreas de cada programa</strong><span>Qué áreas de conocimiento tiene cada programa</span></span></a><a class="tarjeta" href="/ProgramaPe"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-blanco"/></svg></span><span class="tarjeta-txt"><strong>Prácticas de cada programa</strong><span>Prácticas y estrategias de cada programa</span></span></a><a class="tarjeta" href="/ProgramaCi"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-bombillo"/></svg></span><span class="tarjeta-txt"><strong>Características de cada programa</strong><span>Características de innovación de cada programa</span></span></a><a class="tarjeta" href="/AnPrograma"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-norma"/></svg></span><span class="tarjeta-txt"><strong>Normas de cada programa</strong><span>Normas aplicables a cada programa</span></span></a><a class="tarjeta" href="/EnfoqueRc"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-enfoque"/></svg></span><span class="tarjeta-txt"><strong>Enfoques de cada registro</strong><span>Enfoques de cada registro calificado</span></span></a><a class="tarjeta" href="/AaRc"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-actividad"/></svg></span><span class="tarjeta-txt"><strong>Actividades de cada registro</strong><span>Actividades dentro de cada registro</span></span></a><a class="tarjeta" href="/DocenteDepartamento"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></span><span class="tarjeta-txt"><strong>Docentes por programa</strong><span>Docentes asignados a cada programa</span></span></a><a class="tarjeta" href="/Alianza"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-link"/></svg></span><span class="tarjeta-txt"><strong>Alianzas</strong><span>Alianzas de los programas con aliados</span></span></a></div>
 </section>
-</div>

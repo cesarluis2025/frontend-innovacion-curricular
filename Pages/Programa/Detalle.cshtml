@@ -1,9 +1,8 @@
 @page "{id:int}"
 @model FrontendInnovacionCurricular.Pages.Programa.DetalleModel
 @{ ViewData["Title"] = "Detalle"; }
-<h1>@Model.Maestro.Nombre</h1>
-<p><a href="/Programa">← Volver a la lista</a></p>
-@if (TempData["Ok"] is string ok) { <div class="ok">@ok</div> }
+<p><a class="volver" href="/Programa"><svg class="ico" aria-hidden="true"><use href="#i-atras"/></svg> Volver a la lista</a></p>
+<div class="titulo-txt" style="margin-bottom:1rem"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-programa"/></svg></span><h1>@Model.Maestro.Nombre</h1></div>
 
 <section>
     <h2>Acreditaciones</h2>
@@ -23,7 +22,7 @@
 </div>
     }
     <h3>Agregar varias filas</h3>
-    @if (Model.SeccionConError == "Acreditaciones" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+    @if (Model.SeccionConError == "Acreditaciones" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
     <form method="post" asp-page-handler="Acreditaciones" asp-route-id="@Model.Maestro.Id">
         <div class="tabla">
 <table id="tablaAcreditaciones" class="filas">
@@ -36,8 +35,8 @@
             </tbody>
         </table>
 </div>
-        <button type="button" class="agregar-fila" data-tabla="tablaAcreditaciones">+ Agregar fila</button>
-        <button type="submit">Guardar todas las filas</button>
+        <button type="button" class="agregar-fila" data-tabla="tablaAcreditaciones"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Agregar fila</button>
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar todas las filas</button>
     </form>
 </section>
 <section>
@@ -58,7 +57,7 @@
 </div>
     }
     <h3>Agregar varias filas</h3>
-    @if (Model.SeccionConError == "RegistrosCalificados" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+    @if (Model.SeccionConError == "RegistrosCalificados" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
     <form method="post" asp-page-handler="RegistrosCalificados" asp-route-id="@Model.Maestro.Id">
         <div class="tabla">
 <table id="tablaRegistrosCalificados" class="filas">
@@ -71,8 +70,8 @@
             </tbody>
         </table>
 </div>
-        <button type="button" class="agregar-fila" data-tabla="tablaRegistrosCalificados">+ Agregar fila</button>
-        <button type="submit">Guardar todas las filas</button>
+        <button type="button" class="agregar-fila" data-tabla="tablaRegistrosCalificados"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Agregar fila</button>
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar todas las filas</button>
     </form>
 </section>
 <section>
@@ -93,7 +92,7 @@
 </div>
     }
     <h3>Agregar varias filas</h3>
-    @if (Model.SeccionConError == "ActividadesAcademicas" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+    @if (Model.SeccionConError == "ActividadesAcademicas" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
     <form method="post" asp-page-handler="ActividadesAcademicas" asp-route-id="@Model.Maestro.Id">
         <div class="tabla">
 <table id="tablaActividadesAcademicas" class="filas">
@@ -106,8 +105,8 @@
             </tbody>
         </table>
 </div>
-        <button type="button" class="agregar-fila" data-tabla="tablaActividadesAcademicas">+ Agregar fila</button>
-        <button type="submit">Guardar todas las filas</button>
+        <button type="button" class="agregar-fila" data-tabla="tablaActividadesAcademicas"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Agregar fila</button>
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar todas las filas</button>
     </form>
 </section>
 <section>
@@ -128,7 +127,7 @@
 </div>
     }
     <h3>Agregar varias filas</h3>
-    @if (Model.SeccionConError == "Pasantias" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+    @if (Model.SeccionConError == "Pasantias" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
     <form method="post" asp-page-handler="Pasantias" asp-route-id="@Model.Maestro.Id">
         <div class="tabla">
 <table id="tablaPasantias" class="filas">
@@ -141,8 +140,8 @@
             </tbody>
         </table>
 </div>
-        <button type="button" class="agregar-fila" data-tabla="tablaPasantias">+ Agregar fila</button>
-        <button type="submit">Guardar todas las filas</button>
+        <button type="button" class="agregar-fila" data-tabla="tablaPasantias"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Agregar fila</button>
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar todas las filas</button>
     </form>
 </section>
 <section>
@@ -163,7 +162,7 @@
 </div>
     }
     <h3>Agregar varias filas</h3>
-    @if (Model.SeccionConError == "Premios" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+    @if (Model.SeccionConError == "Premios" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
     <form method="post" asp-page-handler="Premios" asp-route-id="@Model.Maestro.Id">
         <div class="tabla">
 <table id="tablaPremios" class="filas">
@@ -176,8 +175,8 @@
             </tbody>
         </table>
 </div>
-        <button type="button" class="agregar-fila" data-tabla="tablaPremios">+ Agregar fila</button>
-        <button type="submit">Guardar todas las filas</button>
+        <button type="button" class="agregar-fila" data-tabla="tablaPremios"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Agregar fila</button>
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar todas las filas</button>
     </form>
 </section>
 <script src="~/js/detalle.js"></script>

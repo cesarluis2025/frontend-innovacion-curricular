@@ -2,7 +2,7 @@
 @model FrontendInnovacionCurricular.Pages.DocenteDepartamento.EditarModel
 @{ ViewData["Title"] = "Editar asignación"; }
 <h1>Editar asignación</h1>
-@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
 <p>La pareja no se cambia: para asignar otra, se retira esta y se crea una nueva.</p>
 <form method="post">
     <div><label>Documento del docente</label><input value="@Model.Registro.Docente" type="number" disabled /></div>
@@ -12,7 +12,7 @@
     <div><label asp-for="Registro.FechaIngreso">Fecha de ingreso</label><input asp-for="Registro.FechaIngreso" type="date" required /></div>
     <div><label asp-for="Registro.FechaSalida">Fecha de salida</label><input asp-for="Registro.FechaSalida" type="date" /></div>
     <div class="barra">
-        <button type="submit">Actualizar</button>
-        <a class="boton" href="/DocenteDepartamento">Cancelar</a>
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Actualizar</button>
+        <a class="boton" href="/DocenteDepartamento"><svg class="ico" aria-hidden="true"><use href="#i-atras"/></svg> Cancelar</a>
     </div>
 </form>

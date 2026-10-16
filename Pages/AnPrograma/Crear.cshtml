@@ -2,12 +2,12 @@
 @model FrontendInnovacionCurricular.Pages.AnPrograma.CrearModel
 @{ ViewData["Title"] = "Nueva asignación de aspecto normativo"; }
 <h1>Nueva asignación de aspecto normativo</h1>
-@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
 <form method="post">
     <div><label asp-for="Registro.AspectoNormativo">Aspecto normativo</label><select asp-for="Registro.AspectoNormativo" asp-items="Model.ListaAspectoNormativo" required><option value="">Seleccione…</option></select></div>
     <div><label asp-for="Registro.Programa">Programa</label><select asp-for="Registro.Programa" asp-items="Model.ListaPrograma" required><option value="">Seleccione…</option></select></div>
     <div class="barra">
-        <button type="submit">Guardar</button>
-        <a class="boton" href="/AnPrograma">Cancelar</a>
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar</button>
+        <a class="boton" href="/AnPrograma"><svg class="ico" aria-hidden="true"><use href="#i-atras"/></svg> Cancelar</a>
     </div>
 </form>

@@ -2,10 +2,10 @@
 @model FrontendInnovacionCurricular.Pages.AaRc.IndexModel
 @{ ViewData["Title"] = "Actividades académicas en registros calificados"; }
 <header class="titulo">
-    <h1>Actividades académicas en registros calificados</h1>
-    <a class="boton principal" href="/AaRc/Crear">+ Nueva asignación de actividad</a>
+    <div class="titulo-txt"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-actividad"/></svg></span><h1>Actividades académicas en registros calificados</h1></div>
+    <a class="boton principal" href="/AaRc/Crear"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Nueva asignación de actividad</a>
 </header>
-@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
 
 <div class="tabla">
 <table>
@@ -16,9 +16,9 @@
             <tr>
                 <td>@item.ActivAcademicaNombre</td><td>@item.RegistroCalificadoNombre</td><td>@item.Componente</td><td>@item.Semestre</td>
                 <td class="acciones">
-                    <a href="/AaRc/Editar/@item.ActivAcademicasIdcurso/@item.RegistroCalificadoCodigo">Editar</a>
-                    <form method="post" asp-page-handler="Retirar" asp-route-a="@item.ActivAcademicasIdcurso" asp-route-b="@item.RegistroCalificadoCodigo" style="display:inline" onsubmit="return confirm('¿Retirar esta asignación?');">
-                        <button type="submit">Retirar</button>
+                    <a class="btn-icono" href="/AaRc/Editar/@item.ActivAcademicasIdcurso/@item.RegistroCalificadoCodigo"><svg class="ico" aria-hidden="true"><use href="#i-lapiz"/></svg> Editar</a>
+                    <form method="post" asp-page-handler="Retirar" asp-route-a="@item.ActivAcademicasIdcurso" asp-route-b="@item.RegistroCalificadoCodigo" style="display:inline" data-confirmar="¿Retirar esta asignación?">
+                        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-basura"/></svg> Retirar</button>
                     </form>
                 </td>
             </tr>

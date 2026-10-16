@@ -2,7 +2,7 @@
 @model FrontendInnovacionCurricular.Pages.RegistroCalificado.EditarModel
 @{ ViewData["Title"] = "Editar registro calificado"; }
 <h1>Editar registro calificado #@Model.Registro.Codigo</h1>
-@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
 <form method="post">
     <div><label>Código</label><input value="@Model.Registro.Codigo" type="number" disabled /></div>
     <div><label asp-for="Registro.CantCreditos">Cantidad de créditos</label><input asp-for="Registro.CantCreditos" type="text" maxlength="45" required /></div>
@@ -16,7 +16,7 @@
     <div><label asp-for="Registro.TipoTitulacion">Tipo de titulación</label><input asp-for="Registro.TipoTitulacion" type="text" maxlength="45" required /></div>
     <div><label asp-for="Registro.Programa">Programa</label><select asp-for="Registro.Programa" asp-items="Model.ListaPrograma" required><option value="">Seleccione…</option></select></div>
     <div class="barra">
-        <button type="submit">Actualizar</button>
-        <a class="boton" href="/RegistroCalificado">Cancelar</a>
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Actualizar</button>
+        <a class="boton" href="/RegistroCalificado"><svg class="ico" aria-hidden="true"><use href="#i-atras"/></svg> Cancelar</a>
     </div>
 </form>

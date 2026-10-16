@@ -2,7 +2,7 @@
 @model FrontendInnovacionCurricular.Pages.ActivAcademica.CrearModel
 @{ ViewData["Title"] = "Nueva actividad académica"; }
 <h1>Nueva actividad académica</h1>
-@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
 <form method="post">
     <div><label asp-for="Registro.Id">Código</label><input asp-for="Registro.Id" type="number" required /></div>
     <div><label asp-for="Registro.Nombre">Nombre</label><input asp-for="Registro.Nombre" type="text" maxlength="45" required /></div>
@@ -17,8 +17,8 @@
     <div><label asp-for="Registro.PaisEspejo">País espejo</label><input asp-for="Registro.PaisEspejo" type="text" maxlength="45" /></div>
     <div><label asp-for="Registro.Disenio">Programa que la diseñó</label><select asp-for="Registro.Disenio" asp-items="Model.ListaPrograma"><option value="">(ninguna)</option></select></div>
     <div class="barra">
-        <button type="submit">Guardar</button>
-        <a class="boton" href="/ActivAcademica">Cancelar</a>
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar</button>
+        <a class="boton" href="/ActivAcademica"><svg class="ico" aria-hidden="true"><use href="#i-atras"/></svg> Cancelar</a>
     </div>
 </form>
 <script>

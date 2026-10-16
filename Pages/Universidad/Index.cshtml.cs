@@ -22,7 +22,7 @@ public class IndexModel : PageModel
     {
         // Una universidad con facultades activas no se retira: se muestra el motivo.
         MensajeError = await _cliente.EliminarAsync(id);
-        if (MensajeError is null) return RedirectToPage();
+        if (MensajeError is null) { TempData["Ok"] = "Registro retirado."; return RedirectToPage(); }
         Registros = await _cliente.ListarAsync();
         return Page();
     }

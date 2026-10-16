@@ -2,12 +2,12 @@
 @model FrontendInnovacionCurricular.Pages.ProgramaCi.CrearModel
 @{ ViewData["Title"] = "Nueva asignación de característica"; }
 <h1>Nueva asignación de característica</h1>
-@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
 <form method="post">
     <div><label asp-for="Registro.Programa">Programa</label><select asp-for="Registro.Programa" asp-items="Model.ListaPrograma" required><option value="">Seleccione…</option></select></div>
     <div><label asp-for="Registro.CarInnovacion">Característica de innovación</label><select asp-for="Registro.CarInnovacion" asp-items="Model.ListaCarInnovacion" required><option value="">Seleccione…</option></select></div>
     <div class="barra">
-        <button type="submit">Guardar</button>
-        <a class="boton" href="/ProgramaCi">Cancelar</a>
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar</button>
+        <a class="boton" href="/ProgramaCi"><svg class="ico" aria-hidden="true"><use href="#i-atras"/></svg> Cancelar</a>
     </div>
 </form>

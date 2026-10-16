@@ -33,6 +33,7 @@ public class EditarModel : PageModel
             if (actual != null) { Registro.Docente = a; Registro.Departamento = b; Registro.Activo = actual.Activo; Registro.DepartamentoNombre = actual.DepartamentoNombre; }
             return Page();
         }
+        TempData["Ok"] = "Cambios guardados.";
         return RedirectToPage("Index");
     }
 }

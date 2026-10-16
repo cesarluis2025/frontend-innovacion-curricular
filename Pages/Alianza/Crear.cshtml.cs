@@ -48,6 +48,7 @@ public class CrearModel : PageModel
             await CargarListasAsync();
             return Page();
         }
+        TempData["Ok"] = "Registro guardado.";
         return RedirectToPage("Index");
     }
 }
