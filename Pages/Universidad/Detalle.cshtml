@@ -1,0 +1,39 @@
+@page "{id:int}"
+@model FrontendInnovacionCurricular.Pages.Universidad.DetalleModel
+@{ ViewData["Title"] = "Detalle"; }
+<h1>@Model.Maestro.Nombre</h1>
+<p><a href="/Universidad">← Volver a la lista</a></p>
+@if (TempData["Ok"] is string ok) { <div class="ok">@ok</div> }
+
+<section>
+    <h2>Facultades de esta universidad</h2>
+    @if (Model.Facultades.Count == 0) { <p>Todavía no hay registros.</p> }
+    else
+    {
+        <table>
+            <thead><tr><th>Código</th><th>Nombre</th><th>Tipo</th><th>Programas activos</th></tr></thead>
+            <tbody>
+                @foreach (var item in Model.Facultades)
+                {
+                    <tr><td>@item.Id</td><td>@item.Nombre</td><td>@item.Tipo</td><td>@item.TotalProgramas</td></tr>
+                }
+            </tbody>
+        </table>
+    }
+    <h3>Agregar varias filas</h3>
+    @if (Model.SeccionConError == "Facultades" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+    <form method="post" asp-page-handler="Facultades" asp-route-id="@Model.Maestro.Id">
+        <table id="tablaFacultades" class="filas">
+            <thead><tr><th>Código</th><th>Nombre</th><th>Tipo</th><th>Fecha de fundación</th></tr></thead>
+            <tbody>
+                @for (var i = 0; i < Model.NuevasFacultades.Count; i++)
+                {
+                    <tr><td><input asp-for="NuevasFacultades[i].Id" type="number" /></td><td><input asp-for="NuevasFacultades[i].Nombre" type="text" maxlength="60" /></td><td><input asp-for="NuevasFacultades[i].Tipo" type="text" maxlength="45" /></td><td><input asp-for="NuevasFacultades[i].FechaFun" type="date" /></td></tr>
+                }
+            </tbody>
+        </table>
+        <button type="button" class="agregar-fila" data-tabla="tablaFacultades">+ Agregar fila</button>
+        <button type="submit">Guardar todas las filas</button>
+    </form>
+</section>
+<script src="~/js/detalle.js"></script>

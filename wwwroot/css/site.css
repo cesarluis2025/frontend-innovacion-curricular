@@ -18,3 +18,6 @@ header nav .marca { font-weight: bold; margin-left: 0; }
 .grupo summary::-webkit-details-marker { display: none; }
 .grupo[open] > div { position: absolute; z-index: 10; background: #374151; padding: 0.5rem; min-width: 240px; border-radius: 4px; }
 .grupo[open] > div a { display: block; margin: 0.25rem 0.5rem; }
+section { margin-top: 2rem; }
+.ok { background: #dcfce7; color: #166534; padding: 0.5rem 0.75rem; border-radius: 4px; margin: 0.75rem 0; }
+table.filas input, table.filas select { width: 100%; min-width: 90px; padding: 0.3rem; box-sizing: border-box; }

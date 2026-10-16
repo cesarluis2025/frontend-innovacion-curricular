@@ -100,6 +100,20 @@ builder.Services.AddHttpClient<AlianzaCliente>(cliente =>
     cliente.BaseAddress = new Uri(urlApi);
 });
 
+// v2: maestro-detalle (varias filas en una sola petición).
+builder.Services.AddHttpClient<UniversidadDetalleCliente>(cliente =>
+{
+    cliente.BaseAddress = new Uri(urlApi);
+});
+builder.Services.AddHttpClient<FacultadDetalleCliente>(cliente =>
+{
+    cliente.BaseAddress = new Uri(urlApi);
+});
+builder.Services.AddHttpClient<ProgramaDetalleCliente>(cliente =>
+{
+    cliente.BaseAddress = new Uri(urlApi);
+});
+
 var app = builder.Build();
 
 app.UseStaticFiles();

@@ -1,0 +1,39 @@
+@page "{id:int}"
+@model FrontendInnovacionCurricular.Pages.Facultad.DetalleModel
+@{ ViewData["Title"] = "Detalle"; }
+<h1>@Model.Maestro.Nombre</h1>
+<p><a href="/Facultad">← Volver a la lista</a></p>
+@if (TempData["Ok"] is string ok) { <div class="ok">@ok</div> }
+
+<section>
+    <h2>Programas de esta facultad</h2>
+    @if (Model.Programas.Count == 0) { <p>Todavía no hay registros.</p> }
+    else
+    {
+        <table>
+            <thead><tr><th>Código</th><th>Nombre</th><th>Tipo</th><th>Nivel</th><th>Ciudad</th></tr></thead>
+            <tbody>
+                @foreach (var item in Model.Programas)
+                {
+                    <tr><td>@item.Id</td><td>@item.Nombre</td><td>@item.Tipo</td><td>@item.Nivel</td><td>@item.Ciudad</td></tr>
+                }
+            </tbody>
+        </table>
+    }
+    <h3>Agregar varias filas</h3>
+    @if (Model.SeccionConError == "Programas" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+    <form method="post" asp-page-handler="Programas" asp-route-id="@Model.Maestro.Id">
+        <table id="tablaProgramas" class="filas">
+            <thead><tr><th>Código</th><th>Nombre</th><th>Tipo</th><th>Nivel</th><th>Fecha de creación</th><th>Fecha de cierre</th><th>Número de cohortes</th><th>Cantidad de graduados</th><th>Fecha de actualización</th><th>Ciudad</th></tr></thead>
+            <tbody>
+                @for (var i = 0; i < Model.NuevasProgramas.Count; i++)
+                {
+                    <tr><td><input asp-for="NuevasProgramas[i].Id" type="number" /></td><td><input asp-for="NuevasProgramas[i].Nombre" type="text" maxlength="100" /></td><td><input asp-for="NuevasProgramas[i].Tipo" type="text" maxlength="45" /></td><td><input asp-for="NuevasProgramas[i].Nivel" type="text" maxlength="45" /></td><td><input asp-for="NuevasProgramas[i].FechaCreacion" type="text" maxlength="45" /></td><td><input asp-for="NuevasProgramas[i].FechaCierre" type="text" maxlength="45" /></td><td><input asp-for="NuevasProgramas[i].NumeroCohortes" type="text" maxlength="45" /></td><td><input asp-for="NuevasProgramas[i].CantGraduados" type="text" maxlength="45" /></td><td><input asp-for="NuevasProgramas[i].FechaActualizacion" type="text" maxlength="45" /></td><td><input asp-for="NuevasProgramas[i].Ciudad" type="text" maxlength="45" /></td></tr>
+                }
+            </tbody>
+        </table>
+        <button type="button" class="agregar-fila" data-tabla="tablaProgramas">+ Agregar fila</button>
+        <button type="submit">Guardar todas las filas</button>
+    </form>
+</section>
+<script src="~/js/detalle.js"></script>
