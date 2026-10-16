@@ -1,0 +1,11 @@
+@page
+@model FrontendInnovacionCurricular.Pages.ProgramaCi.CrearModel
+@{ ViewData["Title"] = "Nueva asignación de característica"; }
+<h1>Nueva asignación de característica</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+<form method="post">
+    <div><label asp-for="Registro.Programa">Programa</label><select asp-for="Registro.Programa" asp-items="Model.ListaPrograma" required><option value="">Seleccione…</option></select></div>
+    <div><label asp-for="Registro.CarInnovacion">Característica de innovación</label><select asp-for="Registro.CarInnovacion" asp-items="Model.ListaCarInnovacion" required><option value="">Seleccione…</option></select></div>
+    <button type="submit">Guardar</button>
+    <a class="boton" href="/ProgramaCi">Cancelar</a>
+</form>

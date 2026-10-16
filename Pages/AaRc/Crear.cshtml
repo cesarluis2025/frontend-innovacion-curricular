@@ -1,0 +1,13 @@
+@page
+@model FrontendInnovacionCurricular.Pages.AaRc.CrearModel
+@{ ViewData["Title"] = "Nueva asignación de actividad"; }
+<h1>Nueva asignación de actividad</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+<form method="post">
+    <div><label asp-for="Registro.ActivAcademicasIdcurso">Actividad académica</label><select asp-for="Registro.ActivAcademicasIdcurso" asp-items="Model.ListaActivAcademica" required><option value="">Seleccione…</option></select></div>
+    <div><label asp-for="Registro.RegistroCalificadoCodigo">Registro calificado</label><select asp-for="Registro.RegistroCalificadoCodigo" asp-items="Model.ListaRegistroCalificado" required><option value="">Seleccione…</option></select></div>
+    <div><label asp-for="Registro.Componente">Componente</label><input asp-for="Registro.Componente" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.Semestre">Semestre</label><input asp-for="Registro.Semestre" type="text" maxlength="45" required /></div>
+    <button type="submit">Guardar</button>
+    <a class="boton" href="/AaRc">Cancelar</a>
+</form>

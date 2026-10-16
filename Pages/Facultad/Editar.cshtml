@@ -1,0 +1,14 @@
+@page "{id:int}"
+@model FrontendInnovacionCurricular.Pages.Facultad.EditarModel
+@{ ViewData["Title"] = "Editar facultad"; }
+<h1>Editar facultad #@Model.Registro.Id</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+<form method="post">
+    <div><label>Código</label><input value="@Model.Registro.Id" type="number" disabled /></div>
+    <div><label asp-for="Registro.Nombre">Nombre</label><input asp-for="Registro.Nombre" type="text" maxlength="60" required /></div>
+    <div><label asp-for="Registro.Tipo">Tipo</label><input asp-for="Registro.Tipo" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.FechaFun">Fecha de fundación</label><input asp-for="Registro.FechaFun" type="date" required /></div>
+    <div><label asp-for="Registro.Universidad">Universidad</label><select asp-for="Registro.Universidad" asp-items="Model.ListaUniversidad" required><option value="">Seleccione…</option></select></div>
+    <button type="submit">Actualizar</button>
+    <a class="boton" href="/Facultad">Cancelar</a>
+</form>

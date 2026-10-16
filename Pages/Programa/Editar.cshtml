@@ -1,0 +1,20 @@
+@page "{id:int}"
+@model FrontendInnovacionCurricular.Pages.Programa.EditarModel
+@{ ViewData["Title"] = "Editar programa"; }
+<h1>Editar programa #@Model.Registro.Id</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+<form method="post">
+    <div><label>Código</label><input value="@Model.Registro.Id" type="number" disabled /></div>
+    <div><label asp-for="Registro.Nombre">Nombre</label><input asp-for="Registro.Nombre" type="text" maxlength="100" required /></div>
+    <div><label asp-for="Registro.Tipo">Tipo</label><input asp-for="Registro.Tipo" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.Nivel">Nivel</label><input asp-for="Registro.Nivel" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.FechaCreacion">Fecha de creación</label><input asp-for="Registro.FechaCreacion" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.FechaCierre">Fecha de cierre</label><input asp-for="Registro.FechaCierre" type="text" maxlength="45" /></div>
+    <div><label asp-for="Registro.NumeroCohortes">Número de cohortes</label><input asp-for="Registro.NumeroCohortes" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.CantGraduados">Cantidad de graduados</label><input asp-for="Registro.CantGraduados" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.FechaActualizacion">Fecha de actualización</label><input asp-for="Registro.FechaActualizacion" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.Ciudad">Ciudad</label><input asp-for="Registro.Ciudad" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.Facultad">Facultad</label><select asp-for="Registro.Facultad" asp-items="Model.ListaFacultad" required><option value="">Seleccione…</option></select></div>
+    <button type="submit">Actualizar</button>
+    <a class="boton" href="/Programa">Cancelar</a>
+</form>

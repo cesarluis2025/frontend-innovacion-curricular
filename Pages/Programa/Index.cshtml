@@ -1,0 +1,23 @@
+@page
+@model FrontendInnovacionCurricular.Pages.Programa.IndexModel
+@{ ViewData["Title"] = "Programas"; }
+<h1>Programas</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+<a class="boton" href="/Programa/Crear">+ Nuevo programa</a>
+<table>
+    <thead><tr><th>Código</th><th>Nombre</th><th>Tipo</th><th>Nivel</th><th>Ciudad</th><th>Facultad</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var item in Model.Registros)
+        {
+            <tr>
+                <td>@item.Id</td><td>@item.Nombre</td><td>@item.Tipo</td><td>@item.Nivel</td><td>@item.Ciudad</td><td>@item.FacultadNombre</td>
+                <td class="acciones">
+                    <a href="/Programa/Editar/@item.Id">Editar</a>
+                    <form method="post" asp-page-handler="Eliminar" asp-route-id="@item.Id" style="display:inline" onsubmit="return confirm('¿Retirar este registro?');">
+                        <button type="submit">Retirar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

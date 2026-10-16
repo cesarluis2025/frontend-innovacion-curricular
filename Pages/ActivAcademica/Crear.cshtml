@@ -1,0 +1,34 @@
+@page
+@model FrontendInnovacionCurricular.Pages.ActivAcademica.CrearModel
+@{ ViewData["Title"] = "Nueva actividad académica"; }
+<h1>Nueva actividad académica</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+<form method="post">
+    <div><label asp-for="Registro.Id">Código</label><input asp-for="Registro.Id" type="number" required /></div>
+    <div><label asp-for="Registro.Nombre">Nombre</label><input asp-for="Registro.Nombre" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.NumCreditos">Número de créditos</label><input asp-for="Registro.NumCreditos" type="number" required /></div>
+    <div><label asp-for="Registro.Tipo">Tipo</label><input asp-for="Registro.Tipo" type="text" maxlength="20" required /></div>
+    <div><label asp-for="Registro.AreaFormacion">Área de formación</label><input asp-for="Registro.AreaFormacion" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.HAcom">Horas con acompañamiento</label><input asp-for="Registro.HAcom" type="number" required /></div>
+    <div><label asp-for="Registro.HIndep">Horas independientes</label><input asp-for="Registro.HIndep" type="number" required /></div>
+    <div><label asp-for="Registro.Idioma">Idioma</label><input asp-for="Registro.Idioma" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.Espejo">¿Es una actividad espejo?</label><select asp-for="Registro.Espejo" id="selEspejo"><option value="0">No</option><option value="1">Sí</option></select></div>
+    <div><label asp-for="Registro.EntidadEspejo">Entidad espejo</label><input asp-for="Registro.EntidadEspejo" type="text" maxlength="45" /></div>
+    <div><label asp-for="Registro.PaisEspejo">País espejo</label><input asp-for="Registro.PaisEspejo" type="text" maxlength="45" /></div>
+    <div><label asp-for="Registro.Disenio">Programa que la diseñó</label><select asp-for="Registro.Disenio" asp-items="Model.ListaPrograma"><option value="">(ninguna)</option></select></div>
+    <button type="submit">Guardar</button>
+    <a class="boton" href="/ActivAcademica">Cancelar</a>
+</form>
+<script>
+    // Si la actividad no es espejo, la entidad y el país no existen: se deshabilitan y la API guarda «No aplica».
+    (function () {
+        var sel = document.getElementById("selEspejo");
+        function alternar() {
+            var espejo = sel.value === "1";
+            document.getElementById("Registro_EntidadEspejo").disabled = !espejo;
+            document.getElementById("Registro_PaisEspejo").disabled = !espejo;
+        }
+        sel.addEventListener("change", alternar);
+        alternar();
+    })();
+</script>

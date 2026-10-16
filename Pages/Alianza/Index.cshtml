@@ -1,0 +1,23 @@
+@page
+@model FrontendInnovacionCurricular.Pages.Alianza.IndexModel
+@{ ViewData["Title"] = "Alianzas"; }
+<h1>Alianzas</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+<a class="boton" href="/Alianza/Crear">+ Nueva alianza</a>
+<table>
+    <thead><tr><th>Aliado</th><th>Programa (departamento)</th><th>Fecha de inicio</th><th>Fecha de fin</th><th>Documento del docente</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var item in Model.Registros)
+        {
+            <tr>
+                <td>@item.AliadoNombre</td><td>@item.DepartamentoNombre</td><td>@item.FechaInicio.ToString("yyyy-MM-dd")</td><td>@item.FechaFin?.ToString("yyyy-MM-dd")</td><td>@item.Docente</td>
+                <td class="acciones">
+                    <a href="/Alianza/Editar/@item.Aliado/@item.Departamento">Editar</a>
+                    <form method="post" asp-page-handler="Retirar" asp-route-a="@item.Aliado" asp-route-b="@item.Departamento" style="display:inline" onsubmit="return confirm('¿Retirar esta asignación?');">
+                        <button type="submit">Retirar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

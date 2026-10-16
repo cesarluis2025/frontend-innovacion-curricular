@@ -1,0 +1,14 @@
+@page "{a:int}/{b:int}"
+@model FrontendInnovacionCurricular.Pages.AaRc.EditarModel
+@{ ViewData["Title"] = "Editar asignación"; }
+<h1>Editar asignación</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+<p>La pareja no se cambia: para asignar otra, se retira esta y se crea una nueva.</p>
+<form method="post">
+    <div><label>Actividad académica</label><input value="@Model.Registro.ActivAcademicaNombre" type="text" disabled /></div>
+    <div><label>Registro calificado</label><input value="@Model.Registro.RegistroCalificadoNombre" type="text" disabled /></div>
+    <div><label asp-for="Registro.Componente">Componente</label><input asp-for="Registro.Componente" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.Semestre">Semestre</label><input asp-for="Registro.Semestre" type="text" maxlength="45" required /></div>
+    <button type="submit">Actualizar</button>
+    <a class="boton" href="/AaRc">Cancelar</a>
+</form>

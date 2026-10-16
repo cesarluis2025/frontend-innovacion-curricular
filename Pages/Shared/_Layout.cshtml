@@ -2,43 +2,21 @@
 <html lang="es">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewData["Title"] - Innovación Curricular</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <div class="app">
-        <aside class="sidebar">
-            <div class="marca">
-                <span class="marca-linea"></span>
-                <h1>Innovación<br />Curricular</h1>
-                <p>Panel de catálogos</p>
-            </div>
-            <nav>
-                <a href="/AreaConocimiento">Área de conocimiento</a>
-                <a href="/Universidad">Universidad</a>
-                <a href="/AspectoNormativo">Aspecto normativo</a>
-                <a href="/PracticaEstrategia">Práctica / estrategia</a>
-                <a href="/Enfoque">Enfoque</a>
-                <a href="/CarInnovacion">Característica de innovación</a>
-                <a href="/Aliado">Aliado</a>
-            </nav>
-        </aside>
-        <div class="contenido">
-            <main>
-                @RenderBody()
-            </main>
-        </div>
-    </div>
-    <script>
-        document.querySelectorAll(".sidebar nav a").forEach(function (enlace) {
-            if (location.pathname.toLowerCase().startsWith(enlace.getAttribute("href").toLowerCase())) {
-                enlace.classList.add("activo");
-            }
-        });
-    </script>
+    <header>
+        <nav>
+            <a class="marca" href="/">Innovación Curricular</a>
+            <details class="grupo"><summary>Catálogos</summary><div><a href="/AreaConocimiento">Área de conocimiento</a><a href="/AspectoNormativo">Aspecto normativo</a><a href="/PracticaEstrategia">Práctica o estrategia</a><a href="/Enfoque">Enfoque</a><a href="/CarInnovacion">Característica de innovación</a><a href="/Aliado">Aliado</a></div></details>
+            <details class="grupo"><summary>Estructura</summary><div><a href="/Universidad">Universidades</a><a href="/Facultad">Facultades</a><a href="/Programa">Programas</a></div></details>
+            <details class="grupo"><summary>Detalle del programa</summary><div><a href="/Acreditacion">Acreditaciones</a><a href="/RegistroCalificado">Registros calificados</a><a href="/ActivAcademica">Actividades académicas</a><a href="/Pasantia">Pasantías</a><a href="/Premio">Premios</a></div></details>
+            <details class="grupo"><summary>Asignaciones</summary><div><a href="/ProgramaAc">Programas y áreas de conocimiento</a><a href="/ProgramaPe">Programas y prácticas o estrategias</a><a href="/ProgramaCi">Programas y características de innovación</a><a href="/AnPrograma">Aspectos normativos de los programas</a><a href="/EnfoqueRc">Enfoques de los registros calificados</a><a href="/AaRc">Actividades académicas en registros calificados</a><a href="/DocenteDepartamento">Docentes por programa</a><a href="/Alianza">Alianzas</a></div></details>
+        </nav>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
 </body>
 </html>

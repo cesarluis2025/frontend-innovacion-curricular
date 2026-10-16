@@ -1,0 +1,23 @@
+@page
+@model FrontendInnovacionCurricular.Pages.AnPrograma.IndexModel
+@{ ViewData["Title"] = "Aspectos normativos de los programas"; }
+<h1>Aspectos normativos de los programas</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+<a class="boton" href="/AnPrograma/Crear">+ Nueva asignación de aspecto normativo</a>
+<table>
+    <thead><tr><th>Aspecto normativo</th><th>Programa</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var item in Model.Registros)
+        {
+            <tr>
+                <td>@item.AspectoNormativoNombre</td><td>@item.ProgramaNombre</td>
+                <td class="acciones">
+                    
+                    <form method="post" asp-page-handler="Retirar" asp-route-a="@item.AspectoNormativo" asp-route-b="@item.Programa" style="display:inline" onsubmit="return confirm('¿Retirar esta asignación?');">
+                        <button type="submit">Retirar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

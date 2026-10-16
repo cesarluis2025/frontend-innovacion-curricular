@@ -1,0 +1,23 @@
+@page
+@model FrontendInnovacionCurricular.Pages.ProgramaCi.IndexModel
+@{ ViewData["Title"] = "Programas y características de innovación"; }
+<h1>Programas y características de innovación</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+<a class="boton" href="/ProgramaCi/Crear">+ Nueva asignación de característica</a>
+<table>
+    <thead><tr><th>Programa</th><th>Característica de innovación</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var item in Model.Registros)
+        {
+            <tr>
+                <td>@item.ProgramaNombre</td><td>@item.CarInnovacionNombre</td>
+                <td class="acciones">
+                    
+                    <form method="post" asp-page-handler="Retirar" asp-route-a="@item.Programa" asp-route-b="@item.CarInnovacion" style="display:inline" onsubmit="return confirm('¿Retirar esta asignación?');">
+                        <button type="submit">Retirar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

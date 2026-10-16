@@ -1,0 +1,23 @@
+@page
+@model FrontendInnovacionCurricular.Pages.AaRc.IndexModel
+@{ ViewData["Title"] = "Actividades académicas en registros calificados"; }
+<h1>Actividades académicas en registros calificados</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
+<a class="boton" href="/AaRc/Crear">+ Nueva asignación de actividad</a>
+<table>
+    <thead><tr><th>Actividad académica</th><th>Registro calificado</th><th>Componente</th><th>Semestre</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var item in Model.Registros)
+        {
+            <tr>
+                <td>@item.ActivAcademicaNombre</td><td>@item.RegistroCalificadoNombre</td><td>@item.Componente</td><td>@item.Semestre</td>
+                <td class="acciones">
+                    <a href="/AaRc/Editar/@item.ActivAcademicasIdcurso/@item.RegistroCalificadoCodigo">Editar</a>
+                    <form method="post" asp-page-handler="Retirar" asp-route-a="@item.ActivAcademicasIdcurso" asp-route-b="@item.RegistroCalificadoCodigo" style="display:inline" onsubmit="return confirm('¿Retirar esta asignación?');">
+                        <button type="submit">Retirar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
