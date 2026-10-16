@@ -1,9 +1,13 @@
 @page
 @model FrontendInnovacionCurricular.Pages.Facultad.IndexModel
 @{ ViewData["Title"] = "Facultades"; }
-<h1>Facultades</h1>
+<header class="titulo">
+    <h1>Facultades</h1>
+    <a class="boton principal" href="/Facultad/Crear">+ Nueva facultad</a>
+</header>
 @if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
-<a class="boton" href="/Facultad/Crear">+ Nueva facultad</a>
+
+<div class="tabla">
 <table>
     <thead><tr><th>Código</th><th>Nombre</th><th>Tipo</th><th>Universidad</th><th>Programas activos</th><th></th></tr></thead>
     <tbody>
@@ -22,3 +26,4 @@
         }
     </tbody>
 </table>
+</div>

@@ -15,6 +15,8 @@
     <div><label asp-for="Registro.FechaActualizacion">Fecha de actualización</label><input asp-for="Registro.FechaActualizacion" type="text" maxlength="45" required /></div>
     <div><label asp-for="Registro.Ciudad">Ciudad</label><input asp-for="Registro.Ciudad" type="text" maxlength="45" required /></div>
     <div><label asp-for="Registro.Facultad">Facultad</label><select asp-for="Registro.Facultad" asp-items="Model.ListaFacultad" required><option value="">Seleccione…</option></select></div>
-    <button type="submit">Actualizar</button>
-    <a class="boton" href="/Programa">Cancelar</a>
+    <div class="barra">
+        <button type="submit">Actualizar</button>
+        <a class="boton" href="/Programa">Cancelar</a>
+    </div>
 </form>

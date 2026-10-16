@@ -1,9 +1,13 @@
 @page
 @model FrontendInnovacionCurricular.Pages.Premio.IndexModel
 @{ ViewData["Title"] = "Premios"; }
-<h1>Premios</h1>
+<header class="titulo">
+    <h1>Premios</h1>
+    <a class="boton principal" href="/Premio/Crear">+ Nuevo premio</a>
+</header>
 @if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
-<a class="boton" href="/Premio/Crear">+ Nuevo premio</a>
+
+<div class="tabla">
 <table>
     <thead><tr><th>Código</th><th>Nombre</th><th>Fecha</th><th>Entidad que lo otorga</th><th>País</th><th>Programa</th><th></th></tr></thead>
     <tbody>
@@ -21,3 +25,4 @@
         }
     </tbody>
 </table>
+</div>

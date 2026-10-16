@@ -6,6 +6,8 @@
 <form method="post">
     <div><label asp-for="Registro.Programa">Programa</label><select asp-for="Registro.Programa" asp-items="Model.ListaPrograma" required><option value="">Seleccione…</option></select></div>
     <div><label asp-for="Registro.AreaConocimiento">Área de conocimiento</label><select asp-for="Registro.AreaConocimiento" asp-items="Model.ListaAreaConocimiento" required><option value="">Seleccione…</option></select></div>
-    <button type="submit">Guardar</button>
-    <a class="boton" href="/ProgramaAc">Cancelar</a>
+    <div class="barra">
+        <button type="submit">Guardar</button>
+        <a class="boton" href="/ProgramaAc">Cancelar</a>
+    </div>
 </form>

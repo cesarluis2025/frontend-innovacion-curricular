@@ -1,9 +1,13 @@
 @page
 @model FrontendInnovacionCurricular.Pages.AnPrograma.IndexModel
 @{ ViewData["Title"] = "Aspectos normativos de los programas"; }
-<h1>Aspectos normativos de los programas</h1>
+<header class="titulo">
+    <h1>Aspectos normativos de los programas</h1>
+    <a class="boton principal" href="/AnPrograma/Crear">+ Nueva asignación de aspecto normativo</a>
+</header>
 @if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
-<a class="boton" href="/AnPrograma/Crear">+ Nueva asignación de aspecto normativo</a>
+
+<div class="tabla">
 <table>
     <thead><tr><th>Aspecto normativo</th><th>Programa</th><th></th></tr></thead>
     <tbody>
@@ -21,3 +25,4 @@
         }
     </tbody>
 </table>
+</div>

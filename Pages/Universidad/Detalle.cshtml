@@ -10,7 +10,8 @@
     @if (Model.Facultades.Count == 0) { <p>Todavía no hay registros.</p> }
     else
     {
-        <table>
+        <div class="tabla">
+<table>
             <thead><tr><th>Código</th><th>Nombre</th><th>Tipo</th><th>Programas activos</th></tr></thead>
             <tbody>
                 @foreach (var item in Model.Facultades)
@@ -19,11 +20,13 @@
                 }
             </tbody>
         </table>
+</div>
     }
     <h3>Agregar varias filas</h3>
     @if (Model.SeccionConError == "Facultades" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
     <form method="post" asp-page-handler="Facultades" asp-route-id="@Model.Maestro.Id">
-        <table id="tablaFacultades" class="filas">
+        <div class="tabla">
+<table id="tablaFacultades" class="filas">
             <thead><tr><th>Código</th><th>Nombre</th><th>Tipo</th><th>Fecha de fundación</th></tr></thead>
             <tbody>
                 @for (var i = 0; i < Model.NuevasFacultades.Count; i++)
@@ -32,6 +35,7 @@
                 }
             </tbody>
         </table>
+</div>
         <button type="button" class="agregar-fila" data-tabla="tablaFacultades">+ Agregar fila</button>
         <button type="submit">Guardar todas las filas</button>
     </form>

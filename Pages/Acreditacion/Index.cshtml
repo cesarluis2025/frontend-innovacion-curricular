@@ -1,9 +1,13 @@
 @page
 @model FrontendInnovacionCurricular.Pages.Acreditacion.IndexModel
 @{ ViewData["Title"] = "Acreditaciones"; }
-<h1>Acreditaciones</h1>
+<header class="titulo">
+    <h1>Acreditaciones</h1>
+    <a class="boton principal" href="/Acreditacion/Crear">+ Nueva acreditación</a>
+</header>
 @if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
-<a class="boton" href="/Acreditacion/Crear">+ Nueva acreditación</a>
+
+<div class="tabla">
 <table>
     <thead><tr><th>Resolución</th><th>Tipo</th><th>Calificación</th><th>Fecha de inicio</th><th>Fecha de fin</th><th>Programa</th><th></th></tr></thead>
     <tbody>
@@ -21,3 +25,4 @@
         }
     </tbody>
 </table>
+</div>

@@ -10,6 +10,8 @@
     <div><label asp-for="Registro.FechaInicio">Fecha de inicio</label><input asp-for="Registro.FechaInicio" type="text" maxlength="45" required /></div>
     <div><label asp-for="Registro.FechaFin">Fecha de fin</label><input asp-for="Registro.FechaFin" type="text" maxlength="45" required /></div>
     <div><label asp-for="Registro.Programa">Programa</label><select asp-for="Registro.Programa" asp-items="Model.ListaPrograma" required><option value="">Seleccione…</option></select></div>
-    <button type="submit">Guardar</button>
-    <a class="boton" href="/Acreditacion">Cancelar</a>
+    <div class="barra">
+        <button type="submit">Guardar</button>
+        <a class="boton" href="/Acreditacion">Cancelar</a>
+    </div>
 </form>

@@ -1,9 +1,13 @@
 @page
 @model FrontendInnovacionCurricular.Pages.Alianza.IndexModel
 @{ ViewData["Title"] = "Alianzas"; }
-<h1>Alianzas</h1>
+<header class="titulo">
+    <h1>Alianzas</h1>
+    <a class="boton principal" href="/Alianza/Crear">+ Nueva alianza</a>
+</header>
 @if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
-<a class="boton" href="/Alianza/Crear">+ Nueva alianza</a>
+
+<div class="tabla">
 <table>
     <thead><tr><th>Aliado</th><th>Programa (departamento)</th><th>Fecha de inicio</th><th>Fecha de fin</th><th>Documento del docente</th><th></th></tr></thead>
     <tbody>
@@ -21,3 +25,4 @@
         }
     </tbody>
 </table>
+</div>

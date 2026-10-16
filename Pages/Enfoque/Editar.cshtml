@@ -7,6 +7,8 @@
     <div><label>ID</label><input value="@Model.Registro.Id" type="number" disabled /></div>
     <div><label asp-for="Registro.Nombre">Nombre</label><input asp-for="Registro.Nombre" type="text" maxlength="45" /></div>
     <div><label asp-for="Registro.Descripcion">Descripción</label><input asp-for="Registro.Descripcion" type="text" maxlength="45" /></div>
-    <button type="submit">Actualizar</button>
-    <a class="boton" href="/Enfoque">Cancelar</a>
+    <div class="barra">
+        <button type="submit">Actualizar</button>
+        <a class="boton" href="/Enfoque">Cancelar</a>
+    </div>
 </form>

@@ -1,8 +1,12 @@
 @page
 @model FrontendInnovacionCurricular.Pages.AspectoNormativo.IndexModel
 @{ ViewData["Title"] = "Aspecto normativo"; }
-<h1>Aspecto normativo</h1>
-<a class="boton" href="/AspectoNormativo/Crear">+ Nuevo registro</a>
+<header class="titulo">
+    <h1>Aspecto normativo</h1>
+    <a class="boton principal" href="/AspectoNormativo/Crear">+ Nuevo registro</a>
+</header>
+
+<div class="tabla">
 <table>
     <thead><tr><th>ID</th><th>Tipo</th><th>Descripción</th><th>Fuente</th><th></th></tr></thead>
     <tbody>
@@ -20,3 +24,4 @@
         }
     </tbody>
 </table>
+</div>

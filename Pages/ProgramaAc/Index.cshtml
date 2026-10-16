@@ -1,9 +1,13 @@
 @page
 @model FrontendInnovacionCurricular.Pages.ProgramaAc.IndexModel
 @{ ViewData["Title"] = "Programas y áreas de conocimiento"; }
-<h1>Programas y áreas de conocimiento</h1>
+<header class="titulo">
+    <h1>Programas y áreas de conocimiento</h1>
+    <a class="boton principal" href="/ProgramaAc/Crear">+ Nueva asignación de área</a>
+</header>
 @if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
-<a class="boton" href="/ProgramaAc/Crear">+ Nueva asignación de área</a>
+
+<div class="tabla">
 <table>
     <thead><tr><th>Programa</th><th>Área de conocimiento</th><th></th></tr></thead>
     <tbody>
@@ -21,3 +25,4 @@
         }
     </tbody>
 </table>
+</div>

@@ -1,9 +1,13 @@
 @page
 @model FrontendInnovacionCurricular.Pages.DocenteDepartamento.IndexModel
 @{ ViewData["Title"] = "Docentes por programa"; }
-<h1>Docentes por programa</h1>
+<header class="titulo">
+    <h1>Docentes por programa</h1>
+    <a class="boton principal" href="/DocenteDepartamento/Crear">+ Nueva asignación de docente</a>
+</header>
 @if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
-<a class="boton" href="/DocenteDepartamento/Crear">+ Nueva asignación de docente</a>
+
+<div class="tabla">
 <table>
     <thead><tr><th>Documento del docente</th><th>Programa (departamento)</th><th>Dedicación</th><th>Modalidad</th><th>Fecha de ingreso</th><th>Fecha de salida</th><th></th></tr></thead>
     <tbody>
@@ -21,3 +25,4 @@
         }
     </tbody>
 </table>
+</div>

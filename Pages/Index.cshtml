@@ -1,12 +1,30 @@
 @page
-@{ ViewData["Title"] = "Inicio"; }
-<h1>Módulo de innovación curricular</h1>
-<p>Elija qué quiere consultar o registrar.</p>
-<h2>Catálogos</h2>
-<ul><li><a href="/AreaConocimiento">Área de conocimiento</a></li><li><a href="/AspectoNormativo">Aspecto normativo</a></li><li><a href="/PracticaEstrategia">Práctica o estrategia</a></li><li><a href="/Enfoque">Enfoque</a></li><li><a href="/CarInnovacion">Característica de innovación</a></li><li><a href="/Aliado">Aliado</a></li></ul>
-<h2>Estructura</h2>
-<ul><li><a href="/Universidad">Universidades</a></li><li><a href="/Facultad">Facultades</a></li><li><a href="/Programa">Programas</a></li></ul>
-<h2>Detalle del programa</h2>
-<ul><li><a href="/Acreditacion">Acreditaciones</a></li><li><a href="/RegistroCalificado">Registros calificados</a></li><li><a href="/ActivAcademica">Actividades académicas</a></li><li><a href="/Pasantia">Pasantías</a></li><li><a href="/Premio">Premios</a></li></ul>
-<h2>Asignaciones</h2>
-<ul><li><a href="/ProgramaAc">Programas y áreas de conocimiento</a></li><li><a href="/ProgramaPe">Programas y prácticas o estrategias</a></li><li><a href="/ProgramaCi">Programas y características de innovación</a></li><li><a href="/AnPrograma">Aspectos normativos de los programas</a></li><li><a href="/EnfoqueRc">Enfoques de los registros calificados</a></li><li><a href="/AaRc">Actividades académicas en registros calificados</a></li><li><a href="/DocenteDepartamento">Docentes por programa</a></li><li><a href="/Alianza">Alianzas</a></li></ul>
+@model FrontendInnovacionCurricular.Pages.IndexModel
+@{
+    ViewData["Title"] = "Inicio";
+    string N(int n) => n < 0 ? "—" : n.ToString();
+}
+<h1 class="portada">Módulo de innovación curricular</h1>
+<p class="intro">Cada programa académico cuelga de una facultad y cada facultad de una universidad. Entre por donde quiera registrar o consultar.</p>
+
+<ol class="cadena" aria-label="Estructura académica">
+    <li><a href="/Universidad"><span class="cifra">@N(Model.Universidades)</span><span class="nombre">Universidades</span></a></li>
+    <li><a href="/Facultad"><span class="cifra">@N(Model.Facultades)</span><span class="nombre">Facultades</span></a></li>
+    <li><a href="/Programa"><span class="cifra">@N(Model.Programas)</span><span class="nombre">Programas</span></a></li>
+</ol>
+<p class="nota">Dentro de cada universidad, facultad o programa, el botón «Detalle» deja ver y agregar lo que depende de él, varias filas a la vez.</p>
+
+<div class="bloques">
+<section class="bloque">
+    <h2>Catálogos</h2>
+    <ul><li><a href="/AreaConocimiento">Área de conocimiento</a></li><li><a href="/AspectoNormativo">Aspecto normativo</a></li><li><a href="/PracticaEstrategia">Práctica o estrategia</a></li><li><a href="/Enfoque">Enfoque</a></li><li><a href="/CarInnovacion">Característica de innovación</a></li><li><a href="/Aliado">Aliado</a></li></ul>
+</section>
+<section class="bloque">
+    <h2>Detalle del programa</h2>
+    <ul><li><a href="/Acreditacion">Acreditaciones</a></li><li><a href="/RegistroCalificado">Registros calificados</a></li><li><a href="/ActivAcademica">Actividades académicas</a></li><li><a href="/Pasantia">Pasantías</a></li><li><a href="/Premio">Premios</a></li></ul>
+</section>
+<section class="bloque">
+    <h2>Asignaciones</h2>
+    <ul><li><a href="/ProgramaAc">Áreas de cada programa</a></li><li><a href="/ProgramaPe">Prácticas de cada programa</a></li><li><a href="/ProgramaCi">Características de cada programa</a></li><li><a href="/AnPrograma">Normas de cada programa</a></li><li><a href="/EnfoqueRc">Enfoques de cada registro</a></li><li><a href="/AaRc">Actividades de cada registro</a></li><li><a href="/DocenteDepartamento">Docentes por programa</a></li><li><a href="/Alianza">Alianzas</a></li></ul>
+</section>
+</div>

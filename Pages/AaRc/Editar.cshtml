@@ -9,6 +9,8 @@
     <div><label>Registro calificado</label><input value="@Model.Registro.RegistroCalificadoNombre" type="text" disabled /></div>
     <div><label asp-for="Registro.Componente">Componente</label><input asp-for="Registro.Componente" type="text" maxlength="45" required /></div>
     <div><label asp-for="Registro.Semestre">Semestre</label><input asp-for="Registro.Semestre" type="text" maxlength="45" required /></div>
-    <button type="submit">Actualizar</button>
-    <a class="boton" href="/AaRc">Cancelar</a>
+    <div class="barra">
+        <button type="submit">Actualizar</button>
+        <a class="boton" href="/AaRc">Cancelar</a>
+    </div>
 </form>

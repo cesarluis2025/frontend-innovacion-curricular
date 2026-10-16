@@ -1,9 +1,13 @@
 @page
 @model FrontendInnovacionCurricular.Pages.RegistroCalificado.IndexModel
 @{ ViewData["Title"] = "Registros calificados"; }
-<h1>Registros calificados</h1>
+<header class="titulo">
+    <h1>Registros calificados</h1>
+    <a class="boton principal" href="/RegistroCalificado/Crear">+ Nuevo registro calificado</a>
+</header>
 @if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
-<a class="boton" href="/RegistroCalificado/Crear">+ Nuevo registro calificado</a>
+
+<div class="tabla">
 <table>
     <thead><tr><th>Código</th><th>Metodología</th><th>Fecha de inicio</th><th>Fecha de fin</th><th>Tipo de titulación</th><th>Programa</th><th></th></tr></thead>
     <tbody>
@@ -21,3 +25,4 @@
         }
     </tbody>
 </table>
+</div>

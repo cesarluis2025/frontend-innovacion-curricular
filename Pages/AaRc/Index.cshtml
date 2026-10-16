@@ -1,9 +1,13 @@
 @page
 @model FrontendInnovacionCurricular.Pages.AaRc.IndexModel
 @{ ViewData["Title"] = "Actividades académicas en registros calificados"; }
-<h1>Actividades académicas en registros calificados</h1>
+<header class="titulo">
+    <h1>Actividades académicas en registros calificados</h1>
+    <a class="boton principal" href="/AaRc/Crear">+ Nueva asignación de actividad</a>
+</header>
 @if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
-<a class="boton" href="/AaRc/Crear">+ Nueva asignación de actividad</a>
+
+<div class="tabla">
 <table>
     <thead><tr><th>Actividad académica</th><th>Registro calificado</th><th>Componente</th><th>Semestre</th><th></th></tr></thead>
     <tbody>
@@ -21,3 +25,4 @@
         }
     </tbody>
 </table>
+</div>

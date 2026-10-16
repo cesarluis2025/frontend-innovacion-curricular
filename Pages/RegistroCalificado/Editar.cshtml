@@ -15,6 +15,8 @@
     <div><label asp-for="Registro.DuracionSemestres">Duración (semestres)</label><input asp-for="Registro.DuracionSemestres" type="text" maxlength="45" required /></div>
     <div><label asp-for="Registro.TipoTitulacion">Tipo de titulación</label><input asp-for="Registro.TipoTitulacion" type="text" maxlength="45" required /></div>
     <div><label asp-for="Registro.Programa">Programa</label><select asp-for="Registro.Programa" asp-items="Model.ListaPrograma" required><option value="">Seleccione…</option></select></div>
-    <button type="submit">Actualizar</button>
-    <a class="boton" href="/RegistroCalificado">Cancelar</a>
+    <div class="barra">
+        <button type="submit">Actualizar</button>
+        <a class="boton" href="/RegistroCalificado">Cancelar</a>
+    </div>
 </form>

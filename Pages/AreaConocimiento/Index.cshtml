@@ -2,9 +2,13 @@
 @model FrontendInnovacionCurricular.Pages.AreaConocimiento.IndexModel
 @{ ViewData["Title"] = "Área de conocimiento"; }
 
-<h1>Área de conocimiento</h1>
-<a class="boton" href="/AreaConocimiento/Crear">+ Nuevo registro</a>
+<header class="titulo">
+    <h1>Área de conocimiento</h1>
+    <a class="boton principal" href="/AreaConocimiento/Crear">+ Nuevo registro</a>
+</header>
 
+
+<div class="tabla">
 <table>
     <thead>
         <tr>
@@ -35,3 +39,4 @@
         }
     </tbody>
 </table>
+</div>

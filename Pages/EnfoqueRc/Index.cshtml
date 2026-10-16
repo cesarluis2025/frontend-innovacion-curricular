@@ -1,9 +1,13 @@
 @page
 @model FrontendInnovacionCurricular.Pages.EnfoqueRc.IndexModel
 @{ ViewData["Title"] = "Enfoques de los registros calificados"; }
-<h1>Enfoques de los registros calificados</h1>
+<header class="titulo">
+    <h1>Enfoques de los registros calificados</h1>
+    <a class="boton principal" href="/EnfoqueRc/Crear">+ Nueva asignación de enfoque</a>
+</header>
 @if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error">@Model.MensajeError</div> }
-<a class="boton" href="/EnfoqueRc/Crear">+ Nueva asignación de enfoque</a>
+
+<div class="tabla">
 <table>
     <thead><tr><th>Enfoque</th><th>Registro calificado</th><th></th></tr></thead>
     <tbody>
@@ -21,3 +25,4 @@
         }
     </tbody>
 </table>
+</div>

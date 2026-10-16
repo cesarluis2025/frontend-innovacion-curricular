@@ -16,8 +16,10 @@
     <div><label asp-for="Registro.EntidadEspejo">Entidad espejo</label><input asp-for="Registro.EntidadEspejo" type="text" maxlength="45" /></div>
     <div><label asp-for="Registro.PaisEspejo">País espejo</label><input asp-for="Registro.PaisEspejo" type="text" maxlength="45" /></div>
     <div><label asp-for="Registro.Disenio">Programa que la diseñó</label><select asp-for="Registro.Disenio" asp-items="Model.ListaPrograma"><option value="">(ninguna)</option></select></div>
-    <button type="submit">Actualizar</button>
-    <a class="boton" href="/ActivAcademica">Cancelar</a>
+    <div class="barra">
+        <button type="submit">Actualizar</button>
+        <a class="boton" href="/ActivAcademica">Cancelar</a>
+    </div>
 </form>
 <script>
     // Si la actividad no es espejo, la entidad y el país no existen: se deshabilitan y la API guarda «No aplica».

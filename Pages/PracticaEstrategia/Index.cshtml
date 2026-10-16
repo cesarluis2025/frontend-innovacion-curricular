@@ -1,8 +1,12 @@
 @page
 @model FrontendInnovacionCurricular.Pages.PracticaEstrategia.IndexModel
 @{ ViewData["Title"] = "Práctica / estrategia"; }
-<h1>Práctica / estrategia</h1>
-<a class="boton" href="/PracticaEstrategia/Crear">+ Nuevo registro</a>
+<header class="titulo">
+    <h1>Práctica / estrategia</h1>
+    <a class="boton principal" href="/PracticaEstrategia/Crear">+ Nuevo registro</a>
+</header>
+
+<div class="tabla">
 <table>
     <thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Descripción</th><th></th></tr></thead>
     <tbody>
@@ -20,3 +24,4 @@
         }
     </tbody>
 </table>
+</div>

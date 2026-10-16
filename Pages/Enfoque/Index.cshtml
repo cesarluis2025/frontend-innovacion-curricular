@@ -1,8 +1,12 @@
 @page
 @model FrontendInnovacionCurricular.Pages.Enfoque.IndexModel
 @{ ViewData["Title"] = "Enfoque"; }
-<h1>Enfoque</h1>
-<a class="boton" href="/Enfoque/Crear">+ Nuevo registro</a>
+<header class="titulo">
+    <h1>Enfoque</h1>
+    <a class="boton principal" href="/Enfoque/Crear">+ Nuevo registro</a>
+</header>
+
+<div class="tabla">
 <table>
     <thead><tr><th>ID</th><th>Nombre</th><th>Descripción</th><th></th></tr></thead>
     <tbody>
@@ -20,3 +24,4 @@
         }
     </tbody>
 </table>
+</div>

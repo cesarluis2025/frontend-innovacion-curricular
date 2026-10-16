@@ -11,6 +11,8 @@
     <div><label asp-for="Registro.EntidadOtorgante">Entidad que lo otorga</label><input asp-for="Registro.EntidadOtorgante" type="text" maxlength="45" required /></div>
     <div><label asp-for="Registro.Pais">País</label><input asp-for="Registro.Pais" type="text" maxlength="45" required /></div>
     <div><label asp-for="Registro.Programa">Programa</label><select asp-for="Registro.Programa" asp-items="Model.ListaPrograma" required><option value="">Seleccione…</option></select></div>
-    <button type="submit">Actualizar</button>
-    <a class="boton" href="/Premio">Cancelar</a>
+    <div class="barra">
+        <button type="submit">Actualizar</button>
+        <a class="boton" href="/Premio">Cancelar</a>
+    </div>
 </form>
