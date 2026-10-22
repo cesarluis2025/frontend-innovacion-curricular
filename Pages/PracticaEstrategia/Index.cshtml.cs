@@ -20,6 +20,7 @@ public class IndexModel : PageModel
     public async Task<IActionResult> OnPostEliminarAsync(int id)
     {
         await _cliente.EliminarAsync(id);
+        TempData["Ok"] = "Registro retirado.";
         return RedirectToPage();
     }
 }

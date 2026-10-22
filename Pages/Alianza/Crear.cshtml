@@ -1,0 +1,16 @@
+@page
+@model FrontendInnovacionCurricular.Pages.Alianza.CrearModel
+@{ ViewData["Title"] = "Nueva alianza"; }
+<h1>Nueva alianza</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
+<form method="post">
+    <div><label asp-for="Registro.Aliado">Aliado</label><select asp-for="Registro.Aliado" asp-items="Model.ListaAliado" required><option value="">Seleccione…</option></select></div>
+    <div><label asp-for="Registro.Departamento">Programa (departamento)</label><select asp-for="Registro.Departamento" asp-items="Model.ListaPrograma" required><option value="">Seleccione…</option></select></div>
+    <div><label asp-for="Registro.FechaInicio">Fecha de inicio</label><input asp-for="Registro.FechaInicio" type="date" required /></div>
+    <div><label asp-for="Registro.FechaFin">Fecha de fin</label><input asp-for="Registro.FechaFin" type="date" /></div>
+    <div><label asp-for="Registro.Docente">Documento del docente</label><input asp-for="Registro.Docente" type="number" /></div>
+    <div class="barra">
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar</button>
+        <a class="boton" href="/Alianza"><svg class="ico" aria-hidden="true"><use href="#i-atras"/></svg> Cancelar</a>
+    </div>
+</form>

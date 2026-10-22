@@ -1,0 +1,29 @@
+@page
+@model FrontendInnovacionCurricular.Pages.Programa.IndexModel
+@{ ViewData["Title"] = "Programas"; }
+<header class="titulo">
+    <div class="titulo-txt"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-programa"/></svg></span><h1>Programas</h1></div>
+    <a class="boton principal" href="/Programa/Crear"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Nuevo programa</a>
+</header>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
+
+<div class="tabla">
+<table>
+    <thead><tr><th>Código</th><th>Nombre</th><th>Tipo</th><th>Nivel</th><th>Ciudad</th><th>Facultad</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var item in Model.Registros)
+        {
+            <tr>
+                <td>@item.Id</td><td>@item.Nombre</td><td>@item.Tipo</td><td>@item.Nivel</td><td>@item.Ciudad</td><td>@item.FacultadNombre</td>
+                <td class="acciones">
+                    <a class="btn-icono" href="/Programa/Detalle/@item.Id"><svg class="ico" aria-hidden="true"><use href="#i-ojo"/></svg> Detalle</a>
+                    <a class="btn-icono" href="/Programa/Editar/@item.Id"><svg class="ico" aria-hidden="true"><use href="#i-lapiz"/></svg> Editar</a>
+                    <form method="post" asp-page-handler="Eliminar" asp-route-id="@item.Id" style="display:inline" data-confirmar="¿Retirar este registro?">
+                        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-basura"/></svg> Retirar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

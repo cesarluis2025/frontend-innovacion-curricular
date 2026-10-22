@@ -1,0 +1,13 @@
+@page
+@model FrontendInnovacionCurricular.Pages.EnfoqueRc.CrearModel
+@{ ViewData["Title"] = "Nueva asignación de enfoque"; }
+<h1>Nueva asignación de enfoque</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
+<form method="post">
+    <div><label asp-for="Registro.Enfoque">Enfoque</label><select asp-for="Registro.Enfoque" asp-items="Model.ListaEnfoque" required><option value="">Seleccione…</option></select></div>
+    <div><label asp-for="Registro.RegistroCalificado">Registro calificado</label><select asp-for="Registro.RegistroCalificado" asp-items="Model.ListaRegistroCalificado" required><option value="">Seleccione…</option></select></div>
+    <div class="barra">
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar</button>
+        <a class="boton" href="/EnfoqueRc"><svg class="ico" aria-hidden="true"><use href="#i-atras"/></svg> Cancelar</a>
+    </div>
+</form>

@@ -1,0 +1,28 @@
+@page
+@model FrontendInnovacionCurricular.Pages.EnfoqueRc.IndexModel
+@{ ViewData["Title"] = "Enfoques de los registros calificados"; }
+<header class="titulo">
+    <div class="titulo-txt"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-enfoque"/></svg></span><h1>Enfoques de los registros calificados</h1></div>
+    <a class="boton principal" href="/EnfoqueRc/Crear"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Nueva asignación de enfoque</a>
+</header>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
+
+<div class="tabla">
+<table>
+    <thead><tr><th>Enfoque</th><th>Registro calificado</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var item in Model.Registros)
+        {
+            <tr>
+                <td>@item.EnfoqueNombre</td><td>@item.RegistroCalificadoNombre</td>
+                <td class="acciones">
+                    
+                    <form method="post" asp-page-handler="Retirar" asp-route-a="@item.Enfoque" asp-route-b="@item.RegistroCalificado" style="display:inline" data-confirmar="¿Retirar esta asignación?">
+                        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-basura"/></svg> Retirar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

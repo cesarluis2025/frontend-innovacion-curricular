@@ -1,0 +1,17 @@
+@page
+@model FrontendInnovacionCurricular.Pages.DocenteDepartamento.CrearModel
+@{ ViewData["Title"] = "Nueva asignación de docente"; }
+<h1>Nueva asignación de docente</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
+<form method="post">
+    <div><label asp-for="Registro.Docente">Documento del docente</label><input asp-for="Registro.Docente" type="number" required /></div>
+    <div><label asp-for="Registro.Departamento">Programa (departamento)</label><select asp-for="Registro.Departamento" asp-items="Model.ListaPrograma" required><option value="">Seleccione…</option></select></div>
+    <div><label asp-for="Registro.Dedicacion">Dedicación</label><input asp-for="Registro.Dedicacion" type="text" maxlength="15" required /></div>
+    <div><label asp-for="Registro.Modalidad">Modalidad</label><input asp-for="Registro.Modalidad" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.FechaIngreso">Fecha de ingreso</label><input asp-for="Registro.FechaIngreso" type="date" required /></div>
+    <div><label asp-for="Registro.FechaSalida">Fecha de salida</label><input asp-for="Registro.FechaSalida" type="date" /></div>
+    <div class="barra">
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar</button>
+        <a class="boton" href="/DocenteDepartamento"><svg class="ico" aria-hidden="true"><use href="#i-atras"/></svg> Cancelar</a>
+    </div>
+</form>

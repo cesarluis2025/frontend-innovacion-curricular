@@ -1,0 +1,15 @@
+@page
+@model FrontendInnovacionCurricular.Pages.AaRc.CrearModel
+@{ ViewData["Title"] = "Nueva asignación de actividad"; }
+<h1>Nueva asignación de actividad</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
+<form method="post">
+    <div><label asp-for="Registro.ActivAcademicasIdcurso">Actividad académica</label><select asp-for="Registro.ActivAcademicasIdcurso" asp-items="Model.ListaActivAcademica" required><option value="">Seleccione…</option></select></div>
+    <div><label asp-for="Registro.RegistroCalificadoCodigo">Registro calificado</label><select asp-for="Registro.RegistroCalificadoCodigo" asp-items="Model.ListaRegistroCalificado" required><option value="">Seleccione…</option></select></div>
+    <div><label asp-for="Registro.Componente">Componente</label><input asp-for="Registro.Componente" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.Semestre">Semestre</label><input asp-for="Registro.Semestre" type="text" maxlength="45" required /></div>
+    <div class="barra">
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar</button>
+        <a class="boton" href="/AaRc"><svg class="ico" aria-hidden="true"><use href="#i-atras"/></svg> Cancelar</a>
+    </div>
+</form>

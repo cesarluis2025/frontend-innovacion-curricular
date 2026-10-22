@@ -1,44 +1,79 @@
+@{
+    var ruta = Context.Request.Path.Value ?? "/";
+    string Act(string c) =>
+        ruta.Equals("/" + c, StringComparison.OrdinalIgnoreCase) || ruta.StartsWith("/" + c + "/", StringComparison.OrdinalIgnoreCase)
+            ? " class=\"activo\" aria-current=\"page\"" : "";
+}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewData["Title"] - Innovación Curricular</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%2316302f'/%3E%3Cpath d='m3 10 9-4.5 9 4.5-9 4.5z' fill='%23e6a417'/%3E%3Cpath d='M7 13v3.5c0 1.2 2.2 2.3 5 2.3s5-1.1 5-2.3V13' fill='none' stroke='%23e6a417' stroke-width='1.6'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <div class="app">
-        <aside class="sidebar">
-            <div class="marca">
-                <span class="marca-linea"></span>
-                <h1>Innovación<br />Curricular</h1>
-                <p>Panel de catálogos</p>
-            </div>
-            <nav>
-                <a href="/AreaConocimiento">Área de conocimiento</a>
-                <a href="/Universidad">Universidad</a>
-                <a href="/AspectoNormativo">Aspecto normativo</a>
-                <a href="/PracticaEstrategia">Práctica / estrategia</a>
-                <a href="/Enfoque">Enfoque</a>
-                <a href="/CarInnovacion">Característica de innovación</a>
-                <a href="/Aliado">Aliado</a>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol><symbol id="i-universidad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10m4 11V10m6 11V10m4 11V10M2 10l10-7 10 7z"/></symbol><symbol id="i-facultad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></symbol><symbol id="i-programa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9v6"/></symbol><symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2 2 2 0 0 0 2 2h13"/></symbol><symbol id="i-premio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14.5-1.5 7 5-3 5 3-1.5-7"/></symbol><symbol id="i-pasantia" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol><symbol id="i-acreditacion" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="m9 14 2 2 4-4"/></symbol><symbol id="i-registro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol><symbol id="i-actividad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></symbol><symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol><symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14c2.2.6 3.5 2.5 3.5 6"/></symbol><symbol id="i-aliado" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-4h4v4"/></symbol><symbol id="i-enfoque" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></symbol><symbol id="i-bombillo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></symbol><symbol id="i-norma" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0zM8 21h8"/></symbol><symbol id="i-globo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol><symbol id="i-blanco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol><symbol id="i-mas" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></symbol><symbol id="i-lapiz" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></symbol><symbol id="i-basura" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol><symbol id="i-ojo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol><symbol id="i-atras" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol><symbol id="i-alerta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></symbol><symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></symbol><symbol id="i-guardar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h11l4 4v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M8 3v5h7V3M8 21v-7h8v7"/></symbol><symbol id="i-bandeja" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l3-8h12l3 8v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M3 13h5l1 3h6l1-3h5"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></symbol></svg>
+    <a class="saltar" href="#contenido">Ir al contenido</a>
+    <div class="armazon">
+        <aside class="lateral" id="lateral">
+            <a class="marca" href="/"><span class="logo"><svg class="ico" aria-hidden="true"><use href="#i-programa"/></svg></span><span>Innovación<br />Curricular</span></a>
+            <nav aria-label="Secciones">
+                <ul><li><a href="/"@Html.Raw(ruta == "/" ? " class=\"activo\" aria-current=\"page\"" : "")><svg class="ico" aria-hidden="true"><use href="#i-home"/></svg><span>Inicio</span></a></li></ul>
+            <p class="grupo-titulo">Estructura académica</p>
+            <ul>
+                <li><a href="/Universidad"@Html.Raw(Act("Universidad"))><svg class="ico" aria-hidden="true"><use href="#i-universidad"/></svg><span>Universidades</span></a></li>
+                <li><a href="/Facultad"@Html.Raw(Act("Facultad"))><svg class="ico" aria-hidden="true"><use href="#i-facultad"/></svg><span>Facultades</span></a></li>
+                <li><a href="/Programa"@Html.Raw(Act("Programa"))><svg class="ico" aria-hidden="true"><use href="#i-programa"/></svg><span>Programas</span></a></li>
+            </ul>
+            <p class="grupo-titulo">Catálogos</p>
+            <ul>
+                <li><a href="/AreaConocimiento"@Html.Raw(Act("AreaConocimiento"))><svg class="ico" aria-hidden="true"><use href="#i-globo"/></svg><span>Área de conocimiento</span></a></li>
+                <li><a href="/AspectoNormativo"@Html.Raw(Act("AspectoNormativo"))><svg class="ico" aria-hidden="true"><use href="#i-norma"/></svg><span>Aspecto normativo</span></a></li>
+                <li><a href="/PracticaEstrategia"@Html.Raw(Act("PracticaEstrategia"))><svg class="ico" aria-hidden="true"><use href="#i-blanco"/></svg><span>Práctica o estrategia</span></a></li>
+                <li><a href="/Enfoque"@Html.Raw(Act("Enfoque"))><svg class="ico" aria-hidden="true"><use href="#i-enfoque"/></svg><span>Enfoque</span></a></li>
+                <li><a href="/CarInnovacion"@Html.Raw(Act("CarInnovacion"))><svg class="ico" aria-hidden="true"><use href="#i-bombillo"/></svg><span>Característica de innovación</span></a></li>
+                <li><a href="/Aliado"@Html.Raw(Act("Aliado"))><svg class="ico" aria-hidden="true"><use href="#i-aliado"/></svg><span>Aliado</span></a></li>
+            </ul>
+            <p class="grupo-titulo">Detalle del programa</p>
+            <ul>
+                <li><a href="/Acreditacion"@Html.Raw(Act("Acreditacion"))><svg class="ico" aria-hidden="true"><use href="#i-acreditacion"/></svg><span>Acreditaciones</span></a></li>
+                <li><a href="/RegistroCalificado"@Html.Raw(Act("RegistroCalificado"))><svg class="ico" aria-hidden="true"><use href="#i-registro"/></svg><span>Registros calificados</span></a></li>
+                <li><a href="/ActivAcademica"@Html.Raw(Act("ActivAcademica"))><svg class="ico" aria-hidden="true"><use href="#i-actividad"/></svg><span>Actividades académicas</span></a></li>
+                <li><a href="/Pasantia"@Html.Raw(Act("Pasantia"))><svg class="ico" aria-hidden="true"><use href="#i-pasantia"/></svg><span>Pasantías</span></a></li>
+                <li><a href="/Premio"@Html.Raw(Act("Premio"))><svg class="ico" aria-hidden="true"><use href="#i-premio"/></svg><span>Premios</span></a></li>
+            </ul>
+            <p class="grupo-titulo">Asignaciones</p>
+            <ul>
+                <li><a href="/ProgramaAc"@Html.Raw(Act("ProgramaAc"))><svg class="ico" aria-hidden="true"><use href="#i-globo"/></svg><span>Áreas de cada programa</span></a></li>
+                <li><a href="/ProgramaPe"@Html.Raw(Act("ProgramaPe"))><svg class="ico" aria-hidden="true"><use href="#i-blanco"/></svg><span>Prácticas de cada programa</span></a></li>
+                <li><a href="/ProgramaCi"@Html.Raw(Act("ProgramaCi"))><svg class="ico" aria-hidden="true"><use href="#i-bombillo"/></svg><span>Características de cada programa</span></a></li>
+                <li><a href="/AnPrograma"@Html.Raw(Act("AnPrograma"))><svg class="ico" aria-hidden="true"><use href="#i-norma"/></svg><span>Normas de cada programa</span></a></li>
+                <li><a href="/EnfoqueRc"@Html.Raw(Act("EnfoqueRc"))><svg class="ico" aria-hidden="true"><use href="#i-enfoque"/></svg><span>Enfoques de cada registro</span></a></li>
+                <li><a href="/AaRc"@Html.Raw(Act("AaRc"))><svg class="ico" aria-hidden="true"><use href="#i-actividad"/></svg><span>Actividades de cada registro</span></a></li>
+                <li><a href="/DocenteDepartamento"@Html.Raw(Act("DocenteDepartamento"))><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg><span>Docentes por programa</span></a></li>
+                <li><a href="/Alianza"@Html.Raw(Act("Alianza"))><svg class="ico" aria-hidden="true"><use href="#i-link"/></svg><span>Alianzas</span></a></li>
+            </ul>
             </nav>
         </aside>
-        <div class="contenido">
-            <main>
+        <div class="columna">
+            <div class="barra-movil">
+                <a class="marca-movil" href="/">Innovación Curricular</a>
+                <button type="button" id="botonMenu" aria-controls="lateral" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="#i-menu"/></svg> Menú</button>
+            </div>
+            <main id="contenido">
+                @if (TempData["Ok"] is string aviso)
+                {
+                    <div class="toast" role="status"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span>@aviso</span></div>
+                }
                 @RenderBody()
             </main>
         </div>
     </div>
-    <script>
-        document.querySelectorAll(".sidebar nav a").forEach(function (enlace) {
-            if (location.pathname.toLowerCase().startsWith(enlace.getAttribute("href").toLowerCase())) {
-                enlace.classList.add("activo");
-            }
-        });
-    </script>
+    <script src="~/js/site.js"></script>
 </body>
 </html>

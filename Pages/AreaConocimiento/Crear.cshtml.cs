@@ -20,7 +20,14 @@ public class CrearModel : PageModel
     public async Task<IActionResult> OnPostAsync()
     {
         var error = await _cliente.CrearAsync(Registro);
-        if (error != null) { MensajeError = error; return Page(); }
+        if (error != null)
+        {
+            // La API rechazó el registro (id repetido, campo muy largo, etc.)
+            // Mostramos su mensaje tal cual, sin inventar uno propio.
+            MensajeError = error;
+            return Page();
+        }
+        TempData["Ok"] = "Registro guardado.";
         return RedirectToPage("Index");
     }
 }

@@ -1,0 +1,18 @@
+@page "{id:int}"
+@model FrontendInnovacionCurricular.Pages.Premio.EditarModel
+@{ ViewData["Title"] = "Editar premio"; }
+<h1>Editar premio #@Model.Registro.Id</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
+<form method="post">
+    <div><label>Código</label><input value="@Model.Registro.Id" type="number" disabled /></div>
+    <div><label asp-for="Registro.Nombre">Nombre</label><input asp-for="Registro.Nombre" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.Descripcion">Descripción</label><input asp-for="Registro.Descripcion" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.Fecha">Fecha</label><input asp-for="Registro.Fecha" type="date" required /></div>
+    <div><label asp-for="Registro.EntidadOtorgante">Entidad que lo otorga</label><input asp-for="Registro.EntidadOtorgante" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.Pais">País</label><input asp-for="Registro.Pais" type="text" maxlength="45" required /></div>
+    <div><label asp-for="Registro.Programa">Programa</label><select asp-for="Registro.Programa" asp-items="Model.ListaPrograma" required><option value="">Seleccione…</option></select></div>
+    <div class="barra">
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Actualizar</button>
+        <a class="boton" href="/Premio"><svg class="ico" aria-hidden="true"><use href="#i-atras"/></svg> Cancelar</a>
+    </div>
+</form>

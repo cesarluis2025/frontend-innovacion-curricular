@@ -15,6 +15,7 @@ public class EditarModel : PageModel
 
     public string? MensajeError { get; set; }
 
+    // El {id} de la url llega aquí como parámetro, gracias a @page "{id:int}"
     public async Task<IActionResult> OnGetAsync(int id)
     {
         var registro = await _cliente.ObtenerPorIdAsync(id);
@@ -26,7 +27,13 @@ public class EditarModel : PageModel
     public async Task<IActionResult> OnPostAsync(int id)
     {
         var error = await _cliente.ActualizarAsync(id, Registro);
-        if (error != null) { MensajeError = error; Registro.Id = id; return Page(); }
+        if (error != null)
+        {
+            MensajeError = error;
+            Registro.Id = id;
+            return Page();
+        }
+        TempData["Ok"] = "Cambios guardados.";
         return RedirectToPage("Index");
     }
 }

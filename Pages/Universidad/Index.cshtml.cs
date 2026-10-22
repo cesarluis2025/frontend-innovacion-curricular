@@ -11,6 +11,7 @@ public class IndexModel : PageModel
     public IndexModel(UniversidadCliente cliente) => _cliente = cliente;
 
     public List<Modelo> Registros { get; set; } = new();
+    public string? MensajeError { get; set; }
 
     public async Task OnGetAsync()
     {
@@ -19,7 +20,10 @@ public class IndexModel : PageModel
 
     public async Task<IActionResult> OnPostEliminarAsync(int id)
     {
-        await _cliente.EliminarAsync(id);
-        return RedirectToPage();
+        // Una universidad con facultades activas no se retira: se muestra el motivo.
+        MensajeError = await _cliente.EliminarAsync(id);
+        if (MensajeError is null) { TempData["Ok"] = "Registro retirado."; return RedirectToPage(); }
+        Registros = await _cliente.ListarAsync();
+        return Page();
     }
 }

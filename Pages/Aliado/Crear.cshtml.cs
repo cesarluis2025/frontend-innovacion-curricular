@@ -21,6 +21,7 @@ public class CrearModel : PageModel
     {
         var error = await _cliente.CrearAsync(Registro);
         if (error != null) { MensajeError = error; return Page(); }
+        TempData["Ok"] = "Registro guardado.";
         return RedirectToPage("Index");
     }
 }

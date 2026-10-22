@@ -1,0 +1,28 @@
+@page
+@model FrontendInnovacionCurricular.Pages.DocenteDepartamento.IndexModel
+@{ ViewData["Title"] = "Docentes por programa"; }
+<header class="titulo">
+    <div class="titulo-txt"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></span><h1>Docentes por programa</h1></div>
+    <a class="boton principal" href="/DocenteDepartamento/Crear"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Nueva asignación de docente</a>
+</header>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
+
+<div class="tabla">
+<table>
+    <thead><tr><th>Documento del docente</th><th>Programa (departamento)</th><th>Dedicación</th><th>Modalidad</th><th>Fecha de ingreso</th><th>Fecha de salida</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var item in Model.Registros)
+        {
+            <tr>
+                <td>@item.Docente</td><td>@item.DepartamentoNombre</td><td>@item.Dedicacion</td><td>@item.Modalidad</td><td>@item.FechaIngreso.ToString("yyyy-MM-dd")</td><td>@item.FechaSalida?.ToString("yyyy-MM-dd")</td>
+                <td class="acciones">
+                    <a class="btn-icono" href="/DocenteDepartamento/Editar/@item.Docente/@item.Departamento"><svg class="ico" aria-hidden="true"><use href="#i-lapiz"/></svg> Editar</a>
+                    <form method="post" asp-page-handler="Retirar" asp-route-a="@item.Docente" asp-route-b="@item.Departamento" style="display:inline" data-confirmar="¿Retirar esta asignación?">
+                        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-basura"/></svg> Retirar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

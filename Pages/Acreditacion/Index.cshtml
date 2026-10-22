@@ -1,0 +1,28 @@
+@page
+@model FrontendInnovacionCurricular.Pages.Acreditacion.IndexModel
+@{ ViewData["Title"] = "Acreditaciones"; }
+<header class="titulo">
+    <div class="titulo-txt"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-acreditacion"/></svg></span><h1>Acreditaciones</h1></div>
+    <a class="boton principal" href="/Acreditacion/Crear"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Nueva acreditación</a>
+</header>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
+
+<div class="tabla">
+<table>
+    <thead><tr><th>Resolución</th><th>Tipo</th><th>Calificación</th><th>Fecha de inicio</th><th>Fecha de fin</th><th>Programa</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var item in Model.Registros)
+        {
+            <tr>
+                <td>@item.Resolucion</td><td>@item.Tipo</td><td>@item.Calificacion</td><td>@item.FechaInicio</td><td>@item.FechaFin</td><td>@item.ProgramaNombre</td>
+                <td class="acciones">
+                    <a class="btn-icono" href="/Acreditacion/Editar/@item.Resolucion"><svg class="ico" aria-hidden="true"><use href="#i-lapiz"/></svg> Editar</a>
+                    <form method="post" asp-page-handler="Eliminar" asp-route-id="@item.Resolucion" style="display:inline" data-confirmar="¿Retirar este registro?">
+                        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-basura"/></svg> Retirar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

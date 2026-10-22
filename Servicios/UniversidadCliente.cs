@@ -34,5 +34,9 @@ public class UniversidadCliente
         return e != null && e.TryGetValue("mensaje", out var m) ? m.ToString() : "no se pudo actualizar el registro";
     }
 
-    public async Task EliminarAsync(int id) => await _http.DeleteAsync($"api/universidad/{id}");
+    public async Task<string?> EliminarAsync(int id)
+    {
+        var r = await _http.DeleteAsync($"api/universidad/{id}");
+        return r.IsSuccessStatusCode ? null : await RespuestaApi.LeerErrorAsync(r, "no se pudo retirar el registro");
+    }
 }
