@@ -105,7 +105,7 @@ tbody tr:hover { background: #fff7e3; }
 main > form { background: var(--superficie); border: 1px solid var(--linea); border-radius: 14px; padding: 1.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem 1.5rem; max-width: 56rem; box-shadow: var(--sombra); }
 main > form > div { margin: 0; }
 label { display: block; margin-bottom: 0.3rem; font-weight: 500; font-size: 0.9rem; color: var(--tinta-2); }
-input[type=text], input[type=number], input[type=date], select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid #b9c8c6; border-radius: 10px; font: inherit; background: #fff; color: var(--texto); }
+input[type=text], input[type=password], input[type=email], input[type=number], input[type=date], select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid #b9c8c6; border-radius: 10px; font: inherit; background: #fff; color: var(--texto); } 
 input:disabled, select:disabled { background: #eef2f2; color: var(--suave); }
 input:focus, select:focus { border-color: var(--tinta-3); outline: 3px solid rgba(230,164,23,.35); outline-offset: 0; }
 section { margin-top: 2.25rem; }
@@ -142,3 +142,23 @@ p { max-width: 70ch; }
 @media (prefers-reduced-motion: no-preference) {
     button, .boton, .btn-icono, .lateral li a, .cadena a, .tarjeta { transition: background-color .12s, border-color .12s, color .12s, transform .12s; }
 }
+
+/* v3: control de acceso */
+.sesion-caja { margin: 1.6rem 0.25rem 0; padding: 0.9rem 0.75rem; border-top: 1px solid rgba(255,255,255,.14); }
+.sesion-caja p { margin: 0; }
+.sesion-nombre { display: flex; align-items: center; gap: 0.5rem; font-weight: 600; color: #fff; word-break: break-word; }
+.sesion-roles { font-size: 0.82rem; color: #8fb0ad; margin: 0.15rem 0 0.7rem; }
+.sesion-caja button { width: 100%; justify-content: center; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.25); color: #fff; }
+.sesion-caja button:hover { background: rgba(255,255,255,.18); }
+.pagina-entrada { background: linear-gradient(135deg, var(--tinta) 0%, var(--tinta-3) 100%); min-height: 100vh; }
+.entrada { display: grid; place-items: center; min-height: 100vh; padding: 1.5rem; }
+.tarjeta-entrada { background: var(--superficie); border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.3); padding: 2rem 2rem 1.5rem; width: min(26rem, 100%); }
+.tarjeta-entrada form { display: grid; gap: 1rem; }
+.marca-entrada { display: flex; align-items: center; gap: 0.75rem; font-family: var(--fuente-titulo); font-weight: 700; font-size: 1.15rem; line-height: 1.15; color: var(--tinta); margin-bottom: 1.25rem; }
+.entrada-sub { color: var(--suave); margin: 0 0 1.25rem; }
+.sin-permiso { max-width: 36rem; margin: 3rem auto; display: grid; gap: 0.5rem; justify-items: start; }
+.roles-marcar { border: 1px solid var(--linea); border-radius: 10px; padding: 0.75rem 1rem; grid-column: 1 / -1; }
+.roles-marcar legend { font-weight: 600; padding: 0 0.4rem; }
+.casilla { display: flex; align-items: flex-start; gap: 0.6rem; margin: 0.4rem 0; font-weight: 400; }
+.casilla input { width: auto; margin-top: 0.3rem; }
+small { color: var(--suave); display: block; margin-top: 0.2rem; }

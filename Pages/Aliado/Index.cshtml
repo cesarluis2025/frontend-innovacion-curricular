@@ -3,7 +3,7 @@
 @{ ViewData["Title"] = "Aliado"; }
 <header class="titulo">
     <div class="titulo-txt"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-aliado"/></svg></span><h1>Aliado</h1></div>
-    <a class="boton principal" href="/Aliado/Crear"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Nuevo registro</a>
+    @if (Acceso.PuedeEscribirModulo) { <a class="boton principal" href="/Aliado/Crear"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Nuevo registro</a> }
 </header>
 
 <div class="tabla">
@@ -16,10 +16,13 @@
                 <td>@item.Nit</td><td>@item.RazonSocial</td><td>@item.NombreContacto</td>
                 <td>@item.Correo</td><td>@item.Telefono</td><td>@item.Ciudad</td>
                 <td class="acciones">
-                    <a class="btn-icono" href="/Aliado/Editar/@item.Nit"><svg class="ico" aria-hidden="true"><use href="#i-lapiz"/></svg> Editar</a>
-                    <form method="post" asp-page-handler="Eliminar" asp-route-nit="@item.Nit" style="display:inline" data-confirmar="¿Retirar este registro?">
+                    @if (Acceso.PuedeEscribirModulo) { <a class="btn-icono" href="/Aliado/Editar/@item.Nit"><svg class="ico" aria-hidden="true"><use href="#i-lapiz"/></svg> Editar</a> }
+                    @if (Acceso.PuedeEscribirModulo)
+                    {
+                        <form method="post" asp-page-handler="Eliminar" asp-route-nit="@item.Nit" style="display:inline" data-confirmar="¿Retirar este registro?">
                         <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-basura"/></svg> Retirar</button>
                     </form>
+                    }
                 </td>
             </tr>
         }

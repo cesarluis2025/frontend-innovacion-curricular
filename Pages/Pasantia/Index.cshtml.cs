@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using FrontendInnovacionCurricular.Autorizacion;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using FrontendInnovacionCurricular.Servicios;
@@ -6,6 +7,7 @@ using Modelo = FrontendInnovacionCurricular.Modelos.Pasantia;
 
 namespace FrontendInnovacionCurricular.Pages.Pasantia;
 
+[PermisoPagina("modulo", "leer")]
 public class IndexModel : PageModel
 {
     private readonly PasantiaCliente _cliente;

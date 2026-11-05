@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using FrontendInnovacionCurricular.Autorizacion;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using FrontendInnovacionCurricular.Servicios;
@@ -6,6 +7,7 @@ using Modelo = FrontendInnovacionCurricular.Modelos.ActivAcademica;
 
 namespace FrontendInnovacionCurricular.Pages.ActivAcademica;
 
+[PermisoPagina("modulo", "escribir")]
 public class CrearModel : PageModel
 {
     private readonly ActivAcademicaCliente _cliente;

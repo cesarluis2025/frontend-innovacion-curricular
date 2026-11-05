@@ -1,0 +1,29 @@
+@page
+@model FrontendInnovacionCurricular.Pages.Rol.IndexModel
+@{ ViewData["Title"] = "Roles"; }
+<header class="titulo">
+    <div class="titulo-txt"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-llave"/></svg></span><h1>Roles</h1></div>
+    <a class="boton principal" href="/Rol/Crear"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Nuevo rol</a>
+</header>
+<p>Un rol nuevo no da ningún permiso por sí solo: sirve para clasificar a las personas. Los tres roles base (Administrador, Editor y Consulta) no se pueden renombrar ni retirar.</p>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
+
+<div class="tabla">
+<table>
+    <thead><tr><th>Código</th><th>Nombre</th><th>Descripción</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var item in Model.Registros)
+        {
+            <tr>
+                <td>@item.Id</td><td>@item.Nombre</td><td>@item.Descripcion</td>
+                <td class="acciones">
+                    <a class="btn-icono" href="/Rol/Editar/@item.Id"><svg class="ico" aria-hidden="true"><use href="#i-lapiz"/></svg> Editar</a>
+                    <form method="post" asp-page-handler="Eliminar" asp-route-id="@item.Id" style="display:inline" data-confirmar="¿Retirar este rol?">
+                        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-basura"/></svg> Retirar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using FrontendInnovacionCurricular.Autorizacion;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using FrontendInnovacionCurricular.Modelos;
 using FrontendInnovacionCurricular.Servicios;
 
 namespace FrontendInnovacionCurricular.Pages.Programa;
 
+[PermisoPagina("modulo", "leer")]
 public class DetalleModel : PageModel
 {
     private readonly ProgramaCliente _cliente;

@@ -1,0 +1,15 @@
+@page "{id:int}"
+@model FrontendInnovacionCurricular.Pages.Usuario.EditarModel
+@{ ViewData["Title"] = "Editar persona"; }
+<h1>Editar persona</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
+<form method="post">
+    <div><label asp-for="Registro.Username">Usuario</label><input asp-for="Registro.Username" type="text" maxlength="100" required /></div>
+    <div><label asp-for="Registro.NombreCompleto">Nombre completo</label><input asp-for="Registro.NombreCompleto" type="text" maxlength="200" /></div>
+    <div><label asp-for="Registro.Email">Correo</label><input asp-for="Registro.Email" type="email" maxlength="150" required /></div>
+    <div><label asp-for="Registro.Password">Contraseña nueva</label><input asp-for="Registro.Password" type="password" minlength="8" maxlength="72" autocomplete="new-password" /><small>Déjela vacía para no cambiarla.</small></div>
+    <div class="barra">
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar</button>
+        <a class="boton" href="/Usuario"><svg class="ico" aria-hidden="true"><use href="#i-atras"/></svg> Cancelar</a>
+    </div>
+</form>

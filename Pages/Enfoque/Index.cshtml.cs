@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using FrontendInnovacionCurricular.Autorizacion;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using FrontendInnovacionCurricular.Servicios;
 using Modelo = FrontendInnovacionCurricular.Modelos.Enfoque;
 
 namespace FrontendInnovacionCurricular.Pages.Enfoque;
 
+[PermisoPagina("modulo", "leer")]
 public class IndexModel : PageModel
 {
     private readonly EnfoqueCliente _cliente;

@@ -1,0 +1,22 @@
+@page
+@model FrontendInnovacionCurricular.Pages.Usuario.CrearModel
+@{ ViewData["Title"] = "Nueva persona"; }
+<h1>Nueva persona</h1>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
+<form method="post">
+    <div><label asp-for="Registro.Username">Usuario</label><input asp-for="Registro.Username" type="text" maxlength="100" autocomplete="off" required /></div>
+    <div><label asp-for="Registro.NombreCompleto">Nombre completo</label><input asp-for="Registro.NombreCompleto" type="text" maxlength="200" /></div>
+    <div><label asp-for="Registro.Email">Correo</label><input asp-for="Registro.Email" type="email" maxlength="150" required /></div>
+    <div><label asp-for="Registro.Password">Contraseña</label><input asp-for="Registro.Password" type="password" minlength="8" maxlength="72" autocomplete="new-password" required /><small>De 8 a 72 caracteres.</small></div>
+    <fieldset class="roles-marcar">
+        <legend>Roles</legend>
+        @foreach (var r in Model.ListaRoles)
+        {
+            <label class="casilla"><input type="checkbox" name="Registro.Roles" value="@r.Id" @(Model.Registro.Roles.Contains(r.Id) ? "checked" : null) /> <span><strong>@r.Nombre</strong> @r.Descripcion</span></label>
+        }
+    </fieldset>
+    <div class="barra">
+        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar</button>
+        <a class="boton" href="/Usuario"><svg class="ico" aria-hidden="true"><use href="#i-atras"/></svg> Cancelar</a>
+    </div>
+</form>

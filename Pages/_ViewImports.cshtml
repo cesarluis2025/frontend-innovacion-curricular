@@ -1,3 +1,6 @@
 @namespace FrontendInnovacionCurricular.Pages
 @using FrontendInnovacionCurricular.Modelos
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@* Los permisos de la persona de ESTA petición (los consulta el filtro de páginas). Sirven para
+   mostrar u ocultar botones; esconder un botón no protege nada: la protección es la negativa de la API. *@
+@inject FrontendInnovacionCurricular.Servicios.PermisosActuales Acceso

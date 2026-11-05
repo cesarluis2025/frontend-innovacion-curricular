@@ -1,0 +1,68 @@
+@model FrontendInnovacionCurricular.Servicios.PermisosActuales
+@{
+    var ruta = Context.Request.Path.Value ?? "/";
+    string Act(string c) =>
+        ruta.Equals("/" + c, StringComparison.OrdinalIgnoreCase) || ruta.StartsWith("/" + c + "/", StringComparison.OrdinalIgnoreCase)
+            ? " class=\"activo\" aria-current=\"page\"" : "";
+    var yo = Model.Actual;
+}
+@* El menú se arma con lo que la persona PUEDE hacer ahora. Esconder una opción no protege
+   nada: la protección es la negativa de la API. *@
+<nav aria-label="Secciones">
+    <ul><li><a href="/"@Html.Raw(ruta == "/" ? " class=\"activo\" aria-current=\"page\"" : "")><svg class="ico" aria-hidden="true"><use href="#i-home"/></svg><span>Inicio</span></a></li></ul>
+@if (Model.PuedeLeerModulo)
+{
+    <p class="grupo-titulo">Estructura académica</p>
+    <ul>
+        <li><a href="/Universidad"@Html.Raw(Act("Universidad"))><svg class="ico" aria-hidden="true"><use href="#i-universidad"/></svg><span>Universidades</span></a></li>
+        <li><a href="/Facultad"@Html.Raw(Act("Facultad"))><svg class="ico" aria-hidden="true"><use href="#i-facultad"/></svg><span>Facultades</span></a></li>
+        <li><a href="/Programa"@Html.Raw(Act("Programa"))><svg class="ico" aria-hidden="true"><use href="#i-programa"/></svg><span>Programas</span></a></li>
+    </ul>
+    <p class="grupo-titulo">Catálogos</p>
+    <ul>
+        <li><a href="/AreaConocimiento"@Html.Raw(Act("AreaConocimiento"))><svg class="ico" aria-hidden="true"><use href="#i-globo"/></svg><span>Área de conocimiento</span></a></li>
+        <li><a href="/AspectoNormativo"@Html.Raw(Act("AspectoNormativo"))><svg class="ico" aria-hidden="true"><use href="#i-norma"/></svg><span>Aspecto normativo</span></a></li>
+        <li><a href="/PracticaEstrategia"@Html.Raw(Act("PracticaEstrategia"))><svg class="ico" aria-hidden="true"><use href="#i-blanco"/></svg><span>Práctica o estrategia</span></a></li>
+        <li><a href="/Enfoque"@Html.Raw(Act("Enfoque"))><svg class="ico" aria-hidden="true"><use href="#i-enfoque"/></svg><span>Enfoque</span></a></li>
+        <li><a href="/CarInnovacion"@Html.Raw(Act("CarInnovacion"))><svg class="ico" aria-hidden="true"><use href="#i-bombillo"/></svg><span>Característica de innovación</span></a></li>
+        <li><a href="/Aliado"@Html.Raw(Act("Aliado"))><svg class="ico" aria-hidden="true"><use href="#i-aliado"/></svg><span>Aliado</span></a></li>
+    </ul>
+    <p class="grupo-titulo">Detalle del programa</p>
+    <ul>
+        <li><a href="/Acreditacion"@Html.Raw(Act("Acreditacion"))><svg class="ico" aria-hidden="true"><use href="#i-acreditacion"/></svg><span>Acreditaciones</span></a></li>
+        <li><a href="/RegistroCalificado"@Html.Raw(Act("RegistroCalificado"))><svg class="ico" aria-hidden="true"><use href="#i-registro"/></svg><span>Registros calificados</span></a></li>
+        <li><a href="/ActivAcademica"@Html.Raw(Act("ActivAcademica"))><svg class="ico" aria-hidden="true"><use href="#i-actividad"/></svg><span>Actividades académicas</span></a></li>
+        <li><a href="/Pasantia"@Html.Raw(Act("Pasantia"))><svg class="ico" aria-hidden="true"><use href="#i-pasantia"/></svg><span>Pasantías</span></a></li>
+        <li><a href="/Premio"@Html.Raw(Act("Premio"))><svg class="ico" aria-hidden="true"><use href="#i-premio"/></svg><span>Premios</span></a></li>
+    </ul>
+    <p class="grupo-titulo">Asignaciones</p>
+    <ul>
+        <li><a href="/ProgramaAc"@Html.Raw(Act("ProgramaAc"))><svg class="ico" aria-hidden="true"><use href="#i-globo"/></svg><span>Áreas de cada programa</span></a></li>
+        <li><a href="/ProgramaPe"@Html.Raw(Act("ProgramaPe"))><svg class="ico" aria-hidden="true"><use href="#i-blanco"/></svg><span>Prácticas de cada programa</span></a></li>
+        <li><a href="/ProgramaCi"@Html.Raw(Act("ProgramaCi"))><svg class="ico" aria-hidden="true"><use href="#i-bombillo"/></svg><span>Características de cada programa</span></a></li>
+        <li><a href="/AnPrograma"@Html.Raw(Act("AnPrograma"))><svg class="ico" aria-hidden="true"><use href="#i-norma"/></svg><span>Normas de cada programa</span></a></li>
+        <li><a href="/EnfoqueRc"@Html.Raw(Act("EnfoqueRc"))><svg class="ico" aria-hidden="true"><use href="#i-enfoque"/></svg><span>Enfoques de cada registro</span></a></li>
+        <li><a href="/AaRc"@Html.Raw(Act("AaRc"))><svg class="ico" aria-hidden="true"><use href="#i-actividad"/></svg><span>Actividades de cada registro</span></a></li>
+        <li><a href="/DocenteDepartamento"@Html.Raw(Act("DocenteDepartamento"))><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg><span>Docentes por programa</span></a></li>
+        <li><a href="/Alianza"@Html.Raw(Act("Alianza"))><svg class="ico" aria-hidden="true"><use href="#i-link"/></svg><span>Alianzas</span></a></li>
+    </ul>
+}
+@if (Model.PuedeLeerAcceso)
+{
+    <p class="grupo-titulo">Usuarios y roles</p>
+    <ul>
+        <li><a href="/Usuario"@Html.Raw(Act("Usuario"))><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg><span>Personas</span></a></li>
+        <li><a href="/Rol"@Html.Raw(Act("Rol"))><svg class="ico" aria-hidden="true"><use href="#i-llave"/></svg><span>Roles</span></a></li>
+    </ul>
+}
+@if (yo is not null)
+{
+    <div class="sesion-caja">
+        <p class="sesion-nombre"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg> @(string.IsNullOrWhiteSpace(yo.NombreCompleto) ? yo.Username : yo.NombreCompleto)</p>
+        <p class="sesion-roles">@string.Join(" · ", yo.Roles)</p>
+        <form method="post" asp-page="/Logout">
+            <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-salir"/></svg> Cerrar sesión</button>
+        </form>
+    </div>
+}
+</nav>

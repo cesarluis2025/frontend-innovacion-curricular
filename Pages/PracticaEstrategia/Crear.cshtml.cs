@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using FrontendInnovacionCurricular.Autorizacion;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using FrontendInnovacionCurricular.Servicios;
 using Modelo = FrontendInnovacionCurricular.Modelos.PracticaEstrategia;
 
 namespace FrontendInnovacionCurricular.Pages.PracticaEstrategia;
 
+[PermisoPagina("modulo", "escribir")]
 public class CrearModel : PageModel
 {
     private readonly PracticaEstrategiaCliente _cliente;

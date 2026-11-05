@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using FrontendInnovacionCurricular.Autorizacion;
 using FrontendInnovacionCurricular.Servicios;
 
 namespace FrontendInnovacionCurricular.Pages;
 
+[SoloIdentificadoPagina]
 public class IndexModel : PageModel
 {
     private readonly UniversidadCliente _universidades;

@@ -1,0 +1,18 @@
+@page
+@model FrontendInnovacionCurricular.Pages.LoginModel
+@{
+    ViewData["Title"] = "Entrar";
+    Layout = "_LayoutLogin";
+}
+<section class="tarjeta-entrada">
+    <div class="marca-entrada"><span class="logo"><svg class="ico" aria-hidden="true"><use href="#i-programa"/></svg></span><span>Innovación<br />Curricular</span></div>
+    <h1>Entrar</h1>
+    <p class="entrada-sub">Escriba su usuario y su contraseña.</p>
+    @if (!string.IsNullOrEmpty(Model.Aviso)) { <div class="toast" role="status"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span>@Model.Aviso</span></div> }
+    @if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error" role="alert"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
+    <form method="post">
+        <div><label asp-for="Usuario">Usuario</label><input asp-for="Usuario" type="text" maxlength="100" autocomplete="username" autofocus required /></div>
+        <div><label asp-for="Clave">Contraseña</label><input asp-for="Clave" type="password" maxlength="72" autocomplete="current-password" required /></div>
+        <div class="barra"><button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-salir"/></svg> Entrar</button></div>
+    </form>
+</section>

@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using FrontendInnovacionCurricular.Autorizacion;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using FrontendInnovacionCurricular.Servicios;
 using Modelo = FrontendInnovacionCurricular.Modelos.AaRc;
 
 namespace FrontendInnovacionCurricular.Pages.AaRc;
 
+[PermisoPagina("modulo", "escribir")]
 public class EditarModel : PageModel
 {
     private readonly AaRcCliente _cliente;

@@ -4,7 +4,7 @@
 
 <header class="titulo">
     <div class="titulo-txt"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-globo"/></svg></span><h1>Área de conocimiento</h1></div>
-    <a class="boton principal" href="/AreaConocimiento/Crear"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Nuevo registro</a>
+    @if (Acceso.PuedeEscribirModulo) { <a class="boton principal" href="/AreaConocimiento/Crear"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Nuevo registro</a> }
 </header>
 
 
@@ -28,12 +28,15 @@
                 <td>@item.Area</td>
                 <td>@item.Disciplina</td>
                 <td class="acciones">
-                    <a class="btn-icono" href="/AreaConocimiento/Editar/@item.Id"><svg class="ico" aria-hidden="true"><use href="#i-lapiz"/></svg> Editar</a>
-                    <form method="post" asp-page-handler="Eliminar" asp-route-id="@item.Id"
+                    @if (Acceso.PuedeEscribirModulo) { <a class="btn-icono" href="/AreaConocimiento/Editar/@item.Id"><svg class="ico" aria-hidden="true"><use href="#i-lapiz"/></svg> Editar</a> }
+                    @if (Acceso.PuedeEscribirModulo)
+                    {
+                        <form method="post" asp-page-handler="Eliminar" asp-route-id="@item.Id"
                           style="display:inline"
                           data-confirmar="¿Retirar este registro?">
                         <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-basura"/></svg> Retirar</button>
                     </form>
+                    }
                 </td>
             </tr>
         }
