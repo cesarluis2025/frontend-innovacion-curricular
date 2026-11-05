@@ -1,0 +1,40 @@
+@page "{id:int}"
+@model FrontendInnovacionCurricular.Pages.Usuario.DetalleModel
+@{ ViewData["Title"] = "Roles de la persona"; }
+<p><a class="volver" href="/Usuario"><svg class="ico" aria-hidden="true"><use href="#i-atras"/></svg> Volver a la lista</a></p>
+<div class="titulo-txt" style="margin-bottom:1rem"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></span><h1>@(string.IsNullOrWhiteSpace(Model.Maestro.NombreCompleto) ? Model.Maestro.Username : Model.Maestro.NombreCompleto)</h1></div>
+<p>Usuario: <strong>@Model.Maestro.Username</strong> · Correo: @Model.Maestro.Email</p>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
+
+<section>
+    <h2>Roles de esta persona</h2>
+    @if (Model.RolesActuales.Count == 0) { <p>No tiene ningún rol.</p> }
+    else
+    {
+        <div class="tabla">
+<table>
+            <thead><tr><th>Rol</th><th></th></tr></thead>
+            <tbody>
+                @foreach (var r in Model.RolesActuales)
+                {
+                    <tr><td>@r.Nombre</td>
+                        <td class="acciones">
+                            <form method="post" asp-page-handler="Retirar" asp-route-id="@Model.Maestro.Id" asp-route-rolId="@r.RolId" style="display:inline" data-confirmar="¿Retirar este rol a la persona?">
+                                <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-basura"/></svg> Retirar</button>
+                            </form>
+                        </td></tr>
+                }
+            </tbody>
+        </table>
+</div>
+    }
+    <h3>Asignar otro rol</h3>
+    @if (Model.RolesDisponibles.Count == 0) { <p>Ya tiene todos los roles.</p> }
+    else
+    {
+        <form method="post" asp-page-handler="Asignar" asp-route-id="@Model.Maestro.Id">
+            <div><label asp-for="RolAsignar">Rol</label><select asp-for="RolAsignar" asp-items="Model.RolesDisponibles" required><option value="">Seleccione…</option></select></div>
+            <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Asignar rol</button>
+        </form>
+    }
+</section>

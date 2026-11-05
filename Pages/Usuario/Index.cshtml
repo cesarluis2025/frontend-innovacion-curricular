@@ -1,0 +1,29 @@
+@page
+@model FrontendInnovacionCurricular.Pages.Usuario.IndexModel
+@{ ViewData["Title"] = "Personas"; }
+<header class="titulo">
+    <div class="titulo-txt"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></span><h1>Personas</h1></div>
+    <a class="boton principal" href="/Usuario/Crear"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Nueva persona</a>
+</header>
+@if (!string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
+
+<div class="tabla">
+<table>
+    <thead><tr><th>Usuario</th><th>Nombre</th><th>Correo</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var item in Model.Registros)
+        {
+            <tr>
+                <td>@item.Username</td><td>@item.NombreCompleto</td><td>@item.Email</td>
+                <td class="acciones">
+                    <a class="btn-icono" href="/Usuario/Detalle/@item.Id"><svg class="ico" aria-hidden="true"><use href="#i-ojo"/></svg> Roles</a>
+                    <a class="btn-icono" href="/Usuario/Editar/@item.Id"><svg class="ico" aria-hidden="true"><use href="#i-lapiz"/></svg> Editar</a>
+                    <form method="post" asp-page-handler="Eliminar" asp-route-id="@item.Id" style="display:inline" data-confirmar="¿Retirar a esta persona?">
+                        <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-basura"/></svg> Retirar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

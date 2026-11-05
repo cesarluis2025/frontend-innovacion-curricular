@@ -3,7 +3,7 @@
 @{ ViewData["Title"] = "Característica de innovación"; }
 <header class="titulo">
     <div class="titulo-txt"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-bombillo"/></svg></span><h1>Característica de innovación</h1></div>
-    <a class="boton principal" href="/CarInnovacion/Crear"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Nuevo registro</a>
+    @if (Acceso.PuedeEscribirModulo) { <a class="boton principal" href="/CarInnovacion/Crear"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Nuevo registro</a> }
 </header>
 
 <div class="tabla">
@@ -15,10 +15,13 @@
             <tr>
                 <td>@item.Id</td><td>@item.Nombre</td><td>@item.Descripcion</td><td>@item.Tipo</td>
                 <td class="acciones">
-                    <a class="btn-icono" href="/CarInnovacion/Editar/@item.Id"><svg class="ico" aria-hidden="true"><use href="#i-lapiz"/></svg> Editar</a>
-                    <form method="post" asp-page-handler="Eliminar" asp-route-id="@item.Id" style="display:inline" data-confirmar="¿Retirar este registro?">
+                    @if (Acceso.PuedeEscribirModulo) { <a class="btn-icono" href="/CarInnovacion/Editar/@item.Id"><svg class="ico" aria-hidden="true"><use href="#i-lapiz"/></svg> Editar</a> }
+                    @if (Acceso.PuedeEscribirModulo)
+                    {
+                        <form method="post" asp-page-handler="Eliminar" asp-route-id="@item.Id" style="display:inline" data-confirmar="¿Retirar este registro?">
                         <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-basura"/></svg> Retirar</button>
                     </form>
+                    }
                 </td>
             </tr>
         }

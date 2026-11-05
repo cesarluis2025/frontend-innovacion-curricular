@@ -21,6 +21,8 @@
         </table>
 </div>
     }
+    @if (Acceso.PuedeEscribirModulo)
+    {
     <h3>Agregar varias filas</h3>
     @if (Model.SeccionConError == "Acreditaciones" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
     <form method="post" asp-page-handler="Acreditaciones" asp-route-id="@Model.Maestro.Id">
@@ -38,6 +40,7 @@
         <button type="button" class="agregar-fila" data-tabla="tablaAcreditaciones"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Agregar fila</button>
         <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar todas las filas</button>
     </form>
+    }
 </section>
 <section>
     <h2>Registros calificados</h2>
@@ -56,6 +59,8 @@
         </table>
 </div>
     }
+    @if (Acceso.PuedeEscribirModulo)
+    {
     <h3>Agregar varias filas</h3>
     @if (Model.SeccionConError == "RegistrosCalificados" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
     <form method="post" asp-page-handler="RegistrosCalificados" asp-route-id="@Model.Maestro.Id">
@@ -73,6 +78,7 @@
         <button type="button" class="agregar-fila" data-tabla="tablaRegistrosCalificados"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Agregar fila</button>
         <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar todas las filas</button>
     </form>
+    }
 </section>
 <section>
     <h2>Actividades académicas</h2>
@@ -91,6 +97,8 @@
         </table>
 </div>
     }
+    @if (Acceso.PuedeEscribirModulo)
+    {
     <h3>Agregar varias filas</h3>
     @if (Model.SeccionConError == "ActividadesAcademicas" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
     <form method="post" asp-page-handler="ActividadesAcademicas" asp-route-id="@Model.Maestro.Id">
@@ -108,6 +116,7 @@
         <button type="button" class="agregar-fila" data-tabla="tablaActividadesAcademicas"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Agregar fila</button>
         <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar todas las filas</button>
     </form>
+    }
 </section>
 <section>
     <h2>Pasantías</h2>
@@ -126,6 +135,8 @@
         </table>
 </div>
     }
+    @if (Acceso.PuedeEscribirModulo)
+    {
     <h3>Agregar varias filas</h3>
     @if (Model.SeccionConError == "Pasantias" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
     <form method="post" asp-page-handler="Pasantias" asp-route-id="@Model.Maestro.Id">
@@ -143,6 +154,7 @@
         <button type="button" class="agregar-fila" data-tabla="tablaPasantias"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Agregar fila</button>
         <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar todas las filas</button>
     </form>
+    }
 </section>
 <section>
     <h2>Premios</h2>
@@ -161,6 +173,8 @@
         </table>
 </div>
     }
+    @if (Acceso.PuedeEscribirModulo)
+    {
     <h3>Agregar varias filas</h3>
     @if (Model.SeccionConError == "Premios" && !string.IsNullOrEmpty(Model.MensajeError)) { <div class="error"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg><span>@Model.MensajeError</span></div> }
     <form method="post" asp-page-handler="Premios" asp-route-id="@Model.Maestro.Id">
@@ -178,5 +192,6 @@
         <button type="button" class="agregar-fila" data-tabla="tablaPremios"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg> Agregar fila</button>
         <button type="submit"><svg class="ico" aria-hidden="true"><use href="#i-guardar"/></svg> Guardar todas las filas</button>
     </form>
+    }
 </section>
 <script src="~/js/detalle.js"></script>

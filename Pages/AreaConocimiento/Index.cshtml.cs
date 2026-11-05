@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using FrontendInnovacionCurricular.Autorizacion;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using FrontendInnovacionCurricular.Servicios;
 using ModeloArea = FrontendInnovacionCurricular.Modelos.AreaConocimiento;
 
 namespace FrontendInnovacionCurricular.Pages.AreaConocimiento;
 
+[PermisoPagina("modulo", "leer")]
 public class IndexModel : PageModel
 {
     private readonly AreaConocimientoCliente _cliente;

@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using FrontendInnovacionCurricular.Autorizacion;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using FrontendInnovacionCurricular.Servicios;
 using Modelo = FrontendInnovacionCurricular.Modelos.Alianza;
 
 namespace FrontendInnovacionCurricular.Pages.Alianza;
 
+[PermisoPagina("modulo", "escribir")]
 public class EditarModel : PageModel
 {
     private readonly AlianzaCliente _cliente;
