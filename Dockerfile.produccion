@@ -1,0 +1,20 @@
+# Imagen de PRODUCCION del frontend (la usa Render). El Dockerfile normal es el de
+# desarrollo (dotnet watch). Este compila una vez y ejecuta solo el resultado.
+
+# ---- Etapa 1: compilar ----
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS compilacion
+WORKDIR /origen
+COPY FrontendInnovacionCurricular.csproj .
+RUN dotnet restore FrontendInnovacionCurricular.csproj
+COPY . .
+RUN dotnet publish FrontendInnovacionCurricular.csproj -c Release -o /publicado --no-restore
+
+# ---- Etapa 2: ejecutar ----
+FROM mcr.microsoft.com/dotnet/aspnet:10.0
+WORKDIR /app
+COPY --from=compilacion /publicado .
+ENV ASPNETCORE_ENVIRONMENT=Production
+# Detras del proxy de Render la peticion llega por http; con esto ASP.NET Core usa
+# X-Forwarded-Proto y ve https, asi la cookie de sesion sale con la marca Secure.
+ENV ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
+CMD ["sh", "-c", "export ASPNETCORE_URLS=http://0.0.0.0:${PORT:-8081}; exec dotnet FrontendInnovacionCurricular.dll"]
